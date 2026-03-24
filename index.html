@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Queen College | Facial Studio · Jurong East, Singapore</title>
+  <meta name="description" content="Queen College is a premium facial studio in Jurong East, Singapore, specialising in anti-ageing treatments, collagen skin training, and long-term skin renewal." />
+
+  <!-- Google Fonts: Cormorant Garamond (serif headline) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ──────────────────────────────────────────
+       DESIGN TOKENS — edit colours/fonts here
+    ────────────────────────────────────────── */
+    :root {
+      --gold:        #B8A75C;
+      --gold-light:  #d4c27e;
+      --gold-faint:  #f0ead6;
+      --white:       #FFFFFF;
+      --bg:          #f7f3f1;
+      --bg-card:     #faf7f5;
+      --text-dark:   #2c2420;
+      --text-mid:    #5a4f49;
+      --text-soft:   #8c7e78;
+      --border:      rgba(184,167,92,0.22);
+      --border-soft: rgba(44,36,32,0.08);
+
+      --serif:  'Cormorant Garamond', Georgia, serif;
+      --sans:   'DM Sans', sans-serif;
+
+      --radius:  4px;
+      --section: 96px;
+    }
+
+    /* ──────────────────────────────────────────
+       RESET & BASE
+    ────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-mid);
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a   { color: inherit; text-decoration: none; }
+
+    /* ──────────────────────────────────────────
+       TYPOGRAPHY HELPERS
+    ────────────────────────────────────────── */
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    h1, h2, h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      color: var(--text-dark);
+      line-height: 1.2;
+    }
+
+    h1 { font-size: clamp(2.8rem, 8vw, 5.2rem); letter-spacing: -0.01em; }
+    h2 { font-size: clamp(2rem,   5vw, 3rem);   }
+    h3 { font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 300; }
+
+    p  { font-size: clamp(0.93rem, 2vw, 1.02rem); }
+
+    /* ──────────────────────────────────────────
+       LAYOUT UTILITIES
+    ────────────────────────────────────────── */
+    .container {
+      width: 90%;
+      max-width: 1080px;
+      margin-inline: auto;
+    }
+
+    section { padding-block: var(--section); }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin-block: 20px;
+    }
+
+    /* ──────────────────────────────────────────
+       BUTTONS
+    ────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 14px 30px;
+      border-radius: var(--radius);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--white);
+    }
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(184,167,92,0.28);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-dark);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.45);
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.7);
+    }
+
+    /* ──────────────────────────────────────────
+       NAVIGATION
+    ────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 0;
+      transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(247,243,241,0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 14px 0;
+      box-shadow: 0 1px 0 var(--border-soft);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      transition: color 0.4s ease;
+    }
+
+    nav.scrolled .nav-logo { color: var(--text-dark); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      transition: color 0.3s;
+    }
+
+    nav.scrolled .nav-links a { color: var(--text-mid); }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 9px 20px;
+      border-radius: var(--radius);
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled .nav-cta {
+      color: var(--gold);
+      border-color: var(--border);
+    }
+
+    .nav-cta:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    nav.scrolled .nav-cta:hover {
+      background: var(--gold-faint);
+    }
+
+    /* Mobile nav */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--white);
+      transition: all 0.3s ease;
+    }
+    nav.scrolled .hamburger span { background: var(--text-dark); }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(247,243,241,0.98);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-menu a {
+      font-family: var(--serif);
+      font-size: 2rem;
+      color: var(--text-dark);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    .mobile-close {
+      position: absolute;
+      top: 22px;
+      right: 28px;
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+    }
+
+    /* ──────────────────────────────────────────
+       HERO
+    ────────────────────────────────────────── */
+    #hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: clamp(56px, 8vw, 96px);
+      position: relative;
+      overflow: hidden;
+      padding-top: 0;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(160deg, rgba(44,36,32,0.72) 0%, rgba(44,36,32,0.42) 60%, rgba(44,36,32,0.2) 100%),
+        /* Placeholder: replace with your salon photo */
+        linear-gradient(135deg, #c9b89a 0%, #a89272 35%, #7d6a5a 70%, #5a4f49 100%);
+      background-size: cover;
+      background-position: center top;
+    }
+
+    /* When you add a real image, replace the second gradient above with:
+       url('your-image.jpg')  and add background-size: cover; */
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(44,36,32,0.55) 0%, transparent 55%);
+    }
+
+    /* Subtle grain texture */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-tagline {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-tagline::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold-light);
+    }
+
+    .hero-title {
+      color: var(--white);
+      margin-bottom: 8px;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.2);
+    }
+
+    .hero-subtitle {
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 16px;
+    }
+
+    .hero-desc {
+      font-size: clamp(0.92rem, 2vw, 1rem);
+      color: rgba(255,255,255,0.68);
+      max-width: 480px;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    /* WhatsApp icon inline */
+    .wa-icon { font-size: 1rem; }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 28px;
+      right: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.5);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+
+    .scroll-hint::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.25);
+      animation: scrollLine 1.8s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%   { transform: scaleY(0); transform-origin: bottom; }
+      50%  { transform: scaleY(1); transform-origin: bottom; }
+      51%  { transform: scaleY(1); transform-origin: top; }
+      100% { transform: scaleY(0); transform-origin: top; }
+    }
+
+    /* ──────────────────────────────────────────
+       ANNOUNCEMENT RIBBON (optional, subtle)
+    ────────────────────────────────────────── */
+    /* uncomment to use
+    .ribbon {
+      background: var(--gold);
+      color: var(--white);
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      padding: 9px;
+    }
+    */
+
+    /* ──────────────────────────────────────────
+       ABOUT
+    ────────────────────────────────────────── */
+    #about {
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+
+    .about-image-placeholder {
+      aspect-ratio: 3/4;
+      background: linear-gradient(145deg, #e8e0d4, #d4c9bb);
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Replace this block with <img src="your-photo.jpg" alt="..." /> */
+    .about-image-placeholder::after {
+      content: 'Your salon photo here';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: #a09282;
+      text-transform: uppercase;
+    }
+
+    .about-image-accent {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 60%;
+      aspect-ratio: 1;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      z-index: -1;
+    }
+
+    .about-copy { padding-block: 16px; }
+
+    .about-copy h2 { margin-bottom: 20px; }
+
+    .about-copy p { margin-bottom: 18px; color: var(--text-mid); }
+
+    .about-copy p:last-of-type { margin-bottom: 32px; }
+
+    /* stat row */
+    .stat-row {
+      display: flex;
+      gap: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    .stat-item {}
+
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    /* ──────────────────────────────────────────
+       SERVICES
+    ────────────────────────────────────────── */
+    #services {
+      background: var(--bg);
+    }
+
+    .section-head {
+      max-width: 560px;
+      margin-bottom: 56px;
+    }
+
+    .section-head p {
+      color: var(--text-soft);
+      margin-top: 14px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      padding: 44px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s ease;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 0;
+      background: var(--gold);
+      transition: height 0.4s ease;
+    }
+
+    .service-card:hover { background: var(--white); }
+    .service-card:hover::before { height: 100%; }
+
+    .service-num {
+      font-family: var(--serif);
+      font-size: 3rem;
+      color: var(--gold-faint);
+      line-height: 1;
+      margin-bottom: 20px;
+      transition: color 0.3s;
+    }
+
+    .service-card:hover .service-num { color: rgba(184,167,92,0.18); }
+
+    .service-card h3 {
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--text-soft);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+
+    /* ──────────────────────────────────────────
+       WHY QUEEN COLLEGE
+    ────────────────────────────────────────── */
+    #why {
+      background: var(--white);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      margin-top: 56px;
+    }
+
+    .why-item {
+      padding-top: 28px;
+      border-top: 1px solid var(--border-soft);
+      transition: border-color 0.3s;
+    }
+
+    .why-item:hover { border-color: var(--gold); }
+
+    .why-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 20px;
+    }
+
+    .why-item h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+
+    .why-item p {
+      font-size: 0.91rem;
+      color: var(--text-soft);
+    }
+
+    /* ──────────────────────────────────────────
+       PHILOSOPHY STRIP
+    ────────────────────────────────────────── */
+    #philosophy {
+      background: var(--text-dark);
+      padding-block: 80px;
+    }
+
+    .philosophy-inner {
+      text-align: center;
+    }
+
+    .philosophy-quote {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white);
+      max-width: 720px;
+      margin-inline: auto;
+      line-height: 1.45;
+    }
+
+    .philosophy-quote em {
+      font-style: normal;
+      color: var(--gold-light);
+    }
+
+    .philosophy-attr {
+      margin-top: 24px;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ──────────────────────────────────────────
+       LOCATION / CONTACT
+    ────────────────────────────────────────── */
+    #contact {
+      background: var(--bg);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .contact-info h2 { margin-bottom: 20px; }
+    .contact-info p  { color: var(--text-soft); margin-bottom: 36px; }
+
+    .info-block {
+      margin-bottom: 28px;
+    }
+
+    .info-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .info-value {
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      line-height: 1.65;
+    }
+
+    .info-value a {
+      color: var(--text-dark);
+      transition: color 0.2s;
+    }
+
+    .info-value a:hover { color: var(--gold); }
+
+    .social-row {
+      display: flex;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-mid);
+      transition: all 0.3s;
+      font-size: 15px;
+    }
+
+    .social-link:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .contact-map {
+      background: linear-gradient(145deg, #e2dcd6, #cfc7be);
+      aspect-ratio: 1 / 1.05;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Replace with an actual Google Maps embed:
+       <iframe src="https://www.google.com/maps/embed?..." ...></iframe>
+    */
+    .contact-map-placeholder {
+      text-align: center;
+      color: #a09282;
+    }
+    .contact-map-placeholder .map-icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+    }
+    .contact-map-placeholder p {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #a09282;
+    }
+
+    .contact-cta {
+      margin-top: 36px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* ──────────────────────────────────────────
+       FOOTER
+    ────────────────────────────────────────── */
+    footer {
+      background: var(--text-dark);
+      padding: 60px 0 36px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    .footer-tagline {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+
+    .footer-links a {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-social {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.4);
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+
+    .footer-social a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      width: 100%;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 24px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.08em;
+    }
+
+    /* ──────────────────────────────────────────
+       FADE-IN ANIMATION
+    ────────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ──────────────────────────────────────────
+       RESPONSIVE — TABLET
+    ────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      :root { --section: 72px; }
+
+      .about-grid    { grid-template-columns: 1fr; gap: 48px; }
+      .about-image-wrap { max-width: 420px; }
+      .services-grid { grid-template-columns: 1fr; gap: 2px; }
+      .why-grid      { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .contact-grid  { grid-template-columns: 1fr; gap: 48px; }
+
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ──────────────────────────────────────────
+       RESPONSIVE — MOBILE
+    ────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      :root { --section: 60px; }
+
+      .why-grid   { grid-template-columns: 1fr; gap: 28px; }
+      .stat-row   { gap: 24px; }
+
+      .service-card { padding: 32px 24px; }
+
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+
+      .contact-cta { flex-direction: column; }
+      .contact-cta .btn { justify-content: center; }
+
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════════ -->
+  <nav id="mainNav">
+    <div class="container nav-inner">
+
+      <a href="#hero" class="nav-logo">Queen College</a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Treatments</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#contact">Visit Us</a></li>
+      </ul>
+
+      <!-- ✏️ REPLACE: update this WhatsApp number -->
+      <a href="https://wa.me/6512345678?text=Hi%20Queen%20College%2C%20I'd%20like%20to%20book%20an%20appointment"
+         class="nav-cta" target="_blank" rel="noopener">Book Now</a>
+
+      <div class="hamburger" id="hamburger" role="button" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose" aria-label="Close menu">✕</button>
+    <a href="#about"    onclick="closeMobile()">About</a>
+    <a href="#services" onclick="closeMobile()">Treatments</a>
+    <a href="#why"      onclick="closeMobile()">Why Us</a>
+    <a href="#contact"  onclick="closeMobile()">Visit Us</a>
+    <!-- ✏️ REPLACE: WhatsApp number -->
+    <a href="https://wa.me/6512345678" target="_blank" rel="noopener" style="color:var(--gold)">WhatsApp Us</a>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
+      <p class="hero-tagline">Facial Studio · Jurong East, Singapore</p>
+      <h1 class="hero-title">Queen College</h1>
+      <p class="hero-subtitle">Train Your Skin. Restore Your Glow.</p>
+      <p class="hero-desc">
+        Specialist anti-ageing facials and collagen skin training — designed for women who want real, lasting results, not just a temporary glow.
+      </p>
+      <div class="hero-actions">
+        <!-- ✏️ REPLACE: WhatsApp number in both links below -->
+        <a href="https://wa.me/6512345678?text=Hi%20Queen%20College%2C%20I'd%20like%20to%20book%20an%20appointment"
+           class="btn btn-primary" target="_blank" rel="noopener">
+          Book an Appointment
+        </a>
+        <a href="https://wa.me/6512345678"
+           class="btn btn-ghost" target="_blank" rel="noopener">
+          <span class="wa-icon">💬</span> WhatsApp Us
+        </a>
+      </div>
+    </div>
+
+    <div class="scroll-hint">Scroll</div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       ABOUT
+  ══════════════════════════════════════════ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-image-wrap fade-up">
+          <div class="about-image-placeholder">
+            <!-- ✏️ REPLACE: swap this div for your image:
+                 <img src="images/about-salon.jpg" alt="Queen College facial studio interior" />
+            -->
+          </div>
+          <div class="about-image-accent"></div>
+        </div>
+
+        <div class="about-copy fade-up">
+          <span class="eyebrow">Our Philosophy</span>
+          <div class="divider"></div>
+          <h2>Where skin care becomes skin training</h2>
+
+          <p>
+            Queen College was founded on a simple belief: the skin can be guided — not just treated. With the right techniques, the right touch, and a consistent programme, your skin learns to renew itself from within.
+          </p>
+
+          <p>
+            We focus on collagen stimulation, gentle anti-ageing methods, and long-term skin health. Every session is designed to build on the last — so your results deepen over time, not just in the days after a facial.
+          </p>
+
+          <p>
+            We work quietly and carefully. No rush, no pressure — only a calm space where your skin is truly cared for.
+          </p>
+
+          <a href="#services" class="btn btn-outline">Explore Our Treatments</a>
+
+          <div class="stat-row">
+            <!-- ✏️ REPLACE: update these figures if desired -->
+            <div class="stat-item">
+              <div class="stat-num">8+</div>
+              <div class="stat-label">Years of expertise</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">500+</div>
+              <div class="stat-label">Loyal clients</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">100%</div>
+              <div class="stat-label">No hard sell</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       SERVICES
+  ══════════════════════════════════════════ -->
+  <section id="services">
+    <div class="container">
+
+      <div class="section-head fade-up">
+        <span class="eyebrow">Signature Treatments</span>
+        <div class="divider"></div>
+        <h2>Crafted for your skin's long-term story</h2>
+        <p>Each treatment is chosen or tailored to your skin's current needs — and where you want it to be.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card fade-up">
+          <div class="service-num">01</div>
+          <h3>Anti-Ageing Facial</h3>
+          <!-- ✏️ REPLACE: add your actual treatment description -->
+          <p>A targeted facial that works at multiple layers of the skin to visibly firm, smooth, and lift. Designed for early or advanced signs of ageing — with results that are felt, not just seen.</p>
+        </div>
+
+        <div class="service-card fade-up">
+          <div class="service-num">02</div>
+          <h3>Collagen Skin Training</h3>
+          <!-- ✏️ REPLACE: add your actual treatment description -->
+          <p>Our signature programme. A structured series of sessions that teaches your skin to rebuild its own collagen — for deeper, lasting firmness that grows stronger with each visit.</p>
+        </div>
+
+        <div class="service-card fade-up">
+          <div class="service-num">03</div>
+          <h3>Brightening &amp; Skin Renewal</h3>
+          <!-- ✏️ REPLACE: add your actual treatment description -->
+          <p>Gentle exfoliation, targeted brightening, and barrier repair — for skin that looks clearer, more even, and genuinely refreshed. Suitable for dull, uneven, or post-sun skin.</p>
+        </div>
+
+        <div class="service-card fade-up">
+          <div class="service-num">04</div>
+          <h3>Maintenance &amp; Calming Care</h3>
+          <!-- ✏️ REPLACE: add your actual treatment description -->
+          <p>A steady-rhythm facial for clients who want to maintain their skin between deeper treatments. Soothing, restorative, and always adapted to what your skin needs that day.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       PHILOSOPHY STRIP
+  ══════════════════════════════════════════ -->
+  <section id="philosophy">
+    <div class="container philosophy-inner fade-up">
+      <p class="philosophy-quote">
+        "Skin doesn't change overnight — it changes with <em>patience, consistency,</em> and the right kind of care."
+      </p>
+      <p class="philosophy-attr">— The Queen College approach</p>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       WHY QUEEN COLLEGE
+  ══════════════════════════════════════════ -->
+  <section id="why">
+    <div class="container">
+
+      <div class="section-head fade-up">
+        <span class="eyebrow">Why Queen College</span>
+        <div class="divider"></div>
+        <h2>A different kind of salon experience</h2>
+      </div>
+
+      <div class="why-grid">
+
+        <div class="why-item fade-up">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="17" stroke="#B8A75C" stroke-width="1"/>
+            <path d="M11 18.5l5 5 9-10" stroke="#B8A75C" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Results you build over time</h3>
+          <p>We design treatment programmes for lasting change — not just a one-time glow. Every visit is a step forward.</p>
+        </div>
+
+        <div class="why-item fade-up">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="17" stroke="#B8A75C" stroke-width="1"/>
+            <path d="M18 10v8l5 3" stroke="#B8A75C" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <h3>Designed for busy women</h3>
+          <p>Focused, effective sessions — so you leave feeling restored, not overwhelmed. We respect your time as much as your skin.</p>
+        </div>
+
+        <div class="why-item fade-up">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="17" stroke="#B8A75C" stroke-width="1"/>
+            <path d="M14 20c0-2 1.5-3.5 4-3.5s4 1.5 4 3.5" stroke="#B8A75C" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="18" cy="13" r="2" stroke="#B8A75C" stroke-width="1"/>
+          </svg>
+          <h3>No pressure, no hard sell</h3>
+          <p>We believe in honest recommendations. You'll never leave feeling pushed — only heard and cared for.</p>
+        </div>
+
+        <div class="why-item fade-up">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="17" stroke="#B8A75C" stroke-width="1"/>
+            <path d="M13 16.5s1-4.5 5-4.5 5 4.5 5 4.5v7h-10v-7z" stroke="#B8A75C" stroke-width="1" stroke-linejoin="round"/>
+          </svg>
+          <h3>A calm, refined space</h3>
+          <p>Our studio is thoughtfully designed to feel like a sanctuary. Comfortable, clean, and quiet — just the way a proper facial should be.</p>
+        </div>
+
+        <div class="why-item fade-up">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="17" stroke="#B8A75C" stroke-width="1"/>
+            <path d="M18 11l1.8 3.6 4 .6-2.9 2.8.7 4L18 20l-3.6 2 .7-4L12.2 15l4-.6z" stroke="#B8A75C" stroke-width="1" stroke-linejoin="round"/>
+          </svg>
+          <h3>Collagen-focused expertise</h3>
+          <p>Our treatments go deeper than surface care — targeting collagen renewal so your skin becomes visibly stronger, softer, and more resilient.</p>
+        </div>
+
+        <div class="why-item fade-up">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="17" stroke="#B8A75C" stroke-width="1"/>
+            <path d="M12 22c0-4 2.5-7 6-7s6 3 6 7" stroke="#B8A75C" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="18" y1="12" x2="18" y2="13.5" stroke="#B8A75C" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="13.5" y1="13.5" x2="14.5" y2="14.5" stroke="#B8A75C" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="22.5" y1="13.5" x2="21.5" y2="14.5" stroke="#B8A75C" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <h3>Trusted in the west</h3>
+          <p>Conveniently located in Jurong East — easily accessible for women across the west side of Singapore.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       CONTACT / LOCATION
+  ══════════════════════════════════════════ -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+
+        <div class="contact-info fade-up">
+          <span class="eyebrow">Find Us</span>
+          <div class="divider"></div>
+          <h2>Visit Queen College</h2>
+          <p>We're here when you're ready. Walk-ins welcome, though bookings are preferred so we can give you our full attention.</p>
+
+          <div class="info-block">
+            <div class="info-label">Address</div>
+            <!-- ✏️ REPLACE: your actual address -->
+            <div class="info-value">
+              Your Unit No, Building Name<br>
+              Street Name, Jurong East<br>
+              Singapore 600XXX
+            </div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-label">Opening Hours</div>
+            <!-- ✏️ REPLACE: your actual hours -->
+            <div class="info-value">
+              Monday – Friday: 10:00 am – 8:00 pm<br>
+              Saturday: 10:00 am – 6:00 pm<br>
+              Sunday &amp; Public Holidays: By appointment
+            </div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-label">WhatsApp</div>
+            <div class="info-value">
+              <!-- ✏️ REPLACE: your number -->
+              <a href="https://wa.me/6512345678" target="_blank" rel="noopener">+65 1234 5678</a>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-label">Follow Us</div>
+            <div class="social-row">
+              <!-- ✏️ REPLACE: your actual Instagram link -->
+              <a href="https://instagram.com/queencollegesg" target="_blank" rel="noopener"
+                 class="social-link" aria-label="Instagram">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="2" y="2" width="20" height="20" rx="5"/>
+                  <circle cx="12" cy="12" r="4"/>
+                  <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+                </svg>
+              </a>
+              <!-- ✏️ REPLACE: your actual Facebook link -->
+              <a href="https://facebook.com/queencollegesg" target="_blank" rel="noopener"
+                 class="social-link" aria-label="Facebook">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+              </a>
+              <!-- ✏️ REPLACE: your WhatsApp number -->
+              <a href="https://wa.me/6512345678" target="_blank" rel="noopener"
+                 class="social-link" aria-label="WhatsApp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-cta">
+            <!-- ✏️ REPLACE: WhatsApp number -->
+            <a href="https://wa.me/6512345678?text=Hi%20Queen%20College%2C%20I'd%20like%20to%20book%20an%20appointment"
+               class="btn btn-primary" target="_blank" rel="noopener">
+              Book via WhatsApp
+            </a>
+            <a href="tel:+6512345678" class="btn btn-outline">Call Us</a>
+          </div>
+        </div>
+
+        <!-- Map placeholder -->
+        <div class="contact-map fade-up">
+          <!-- ✏️ REPLACE: embed Google Maps here. Example:
+          <iframe
+            src="https://www.google.com/maps/embed?pb=YOUR_EMBED_CODE"
+            width="100%" height="100%"
+            style="border:0; display:block;"
+            allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          -->
+          <div class="contact-map-placeholder">
+            <div class="map-icon">📍</div>
+            <p>Google Maps embed<br>goes here</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer>
+    <div class="container footer-inner">
+
+      <div class="footer-logo">Queen College</div>
+      <div class="footer-tagline">Train Your Skin. Restore Your Glow.</div>
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#about">About</a>
+        <a href="#services">Treatments</a>
+        <a href="#why">Why Us</a>
+        <a href="#contact">Visit Us</a>
+      </nav>
+
+      <div class="footer-social">
+        <!-- ✏️ REPLACE: your social links -->
+        <a href="https://instagram.com/queencollegesg" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://facebook.com/queencollegesg" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="https://wa.me/6512345678" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="footer-bottom">
+        © 2025 Queen College · queencollegesg.com · Jurong East, Singapore
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════════
+       JAVASCRIPT — minimal, progressive
+  ══════════════════════════════════════════ -->
+  <script>
+    // ── Sticky nav ──────────────────────────
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── Mobile menu ─────────────────────────
+    const hamburger   = document.getElementById('hamburger');
+    const mobileMenu  = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+
+    mobileClose.addEventListener('click', closeMobile);
+
+    function closeMobile() {
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ── Fade-up on scroll ───────────────────
+    const fadeEls = document.querySelectorAll('.fade-up');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    fadeEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
