@@ -181,6 +181,23 @@
       color: var(--white);
       letter-spacing: 0.05em;
       transition: color 0.4s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo-img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      border-radius: 50%;
+      /* invert white bg so logo blends on dark hero */
+      filter: brightness(0) invert(1);
+      transition: filter 0.4s ease;
+    }
+
+    nav.scrolled .nav-logo-img {
+      filter: none;
     }
 
     nav.scrolled .nav-logo { color: var(--text-dark); }
@@ -904,7 +921,10 @@
   <nav id="mainNav">
     <div class="container nav-inner">
 
-      <a href="#hero" class="nav-logo">Queen College</a>
+      <a href="#hero" class="nav-logo">
+        <img src="QC.jpg" alt="Queen College Logo" class="nav-logo-img" />
+        Queen College
+      </a>
 
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
@@ -1272,6 +1292,7 @@
   <footer>
     <div class="container footer-inner">
 
+      <img src="QC.jpg" alt="Queen College Logo" style="width:48px;height:48px;object-fit:contain;border-radius:50%;margin-bottom:8px;opacity:0.85;" />
       <div class="footer-logo">Queen College</div>
       <div class="footer-tagline">Train Your Skin. Restore Your Glow.</div>
 
