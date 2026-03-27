@@ -191,13 +191,12 @@
       height: 36px;
       object-fit: contain;
       border-radius: 50%;
-      /* invert white bg so logo blends on dark hero */
-      filter: brightness(0) invert(1);
-      transition: filter 0.4s ease;
+      mix-blend-mode: screen;
+      transition: opacity 0.4s ease;
     }
 
     nav.scrolled .nav-logo-img {
-      filter: none;
+      mix-blend-mode: multiply;
     }
 
     nav.scrolled .nav-logo { color: var(--text-dark); }
