@@ -549,7 +549,52 @@ background-position: center center;
       text-transform: uppercase;
       color: var(--text-soft);
     }
+/* ──────────────────────────────────────────
+   REVIEWS
+────────────────────────────────────────── */
+#reviews {
+  background: var(--white);
+}
 
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.review-card {
+  background: var(--bg-card);
+  padding: 32px 28px;
+  border-radius: var(--radius);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+.review-stars {
+  color: var(--gold);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  margin-bottom: 14px;
+}
+
+.review-text {
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.review-name {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
     /* ──────────────────────────────────────────
        SERVICES
     ────────────────────────────────────────── */
@@ -900,7 +945,7 @@ background-position: center center;
       .services-grid { grid-template-columns: 1fr; gap: 2px; }
       .why-grid      { grid-template-columns: 1fr 1fr; gap: 36px; }
       .contact-grid  { grid-template-columns: 1fr; gap: 48px; }
-
+      .reviews-grid { grid-template-columns: 1fr; }
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
     }
@@ -1192,7 +1237,57 @@ background-position: center center;
       </div>
     </div>
   </section>
+<!-- ══════════════════════════════════════════
+     REVIEWS
+══════════════════════════════════════════ -->
+<section id="reviews">
+  <div class="container">
 
+    <div class="section-head fade-up">
+      <span class="eyebrow">Client Reviews</span>
+      <div class="divider"></div>
+      <h2>What our clients say</h2>
+      <p>Real experiences from women who trust Queen College with their skin.</p>
+    </div>
+
+    <div class="reviews-grid">
+
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">
+          “I have been going to Joan for body massage since late last year. She has never fail to treat my back ache and water retention issues. She is very knowledgeable and is able to help me with my overall body wellness. Do look for her for a trial session and you will surely love it.
+Services”
+        </p>
+        <div class="review-name">— Kalyn, Google Review</div>
+      </div>
+
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">
+          “I come here every month for the anti-blue facial. Elaine is always so nice and friendly, and the prices have always been very reasonable.”
+        </p>
+        <div class="review-name">— Chan ZX, Google Review</div>
+      </div>
+
+      <div class="review-card fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">
+          “我在这里facial已经2年了，每一次的面部护理过程都非常享受，最喜欢海藻项目，让我的闭口好了不少，脸也感觉很滋润清爽。”
+        </p>
+        <div class="review-name">— Chein Jacks, Google Review</div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top:40px;">
+      <!-- ✏️ REPLACE: your Google review link -->
+      <a href="https://www.google.com/search?sca_esv=a7a8fe0e68039bf1&sxsrf=ANbL-n6IZ596PEDLn1QE-sLRZgu5uVbwmw:1774773978776&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOX9pCF1PA9fKhPx8rLfiPaHxUhal-j7VNAAOZIgJqKEvyDiGq9YQI-o-GdyQKQ1oPNAelD3LR_Dv04bDNm0QzKNr25Dr7qA3S2wv8iA6EwqxDC8SDQ%3D%3D&q=Queen+College+Singapore+Reviews&sa=X&ved=2ahUKEwiD072k3MSTAxWO7TgGHQiaBFMQ0bkNegQIMxAH&biw=1512&bih=857&dpr=2" target="_blank" class="btn btn-outline">
+        View More Reviews
+      </a>
+    </div>
+
+  </div>
+</section>
 
   <!-- ══════════════════════════════════════════
        CONTACT / LOCATION
