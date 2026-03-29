@@ -157,6 +157,7 @@
       right: 0;
       z-index: 100;
       padding: 20px 0;
+      background: rgba(44,36,32,0.35);  /* ← 20260329加這行 */
       transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
     }
 
@@ -172,6 +173,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 24px;   /* ← 20260329加這行 */
     }
 
     .nav-logo {
@@ -184,6 +186,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      flex-shrink: 0;   /* ← 20260329加這行 */
     }
 
     .nav-logo-img {
