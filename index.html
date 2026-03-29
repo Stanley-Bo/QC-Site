@@ -498,6 +498,13 @@ background-position: center center;
       color: #a09282;
       text-transform: uppercase;
     }
+    .about-image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 2px;
+  display: block;
+}
 
     .about-image-accent {
       position: absolute;
@@ -1003,13 +1010,9 @@ background-position: center center;
       <div class="about-grid">
 
         <div class="about-image-wrap fade-up">
-          <div class="about-image-placeholder">
-            <!-- ✏️ REPLACE: swap this div for your image:
-                 <img src="images/about-salon.jpg" alt="Queen College facial studio interior" />
-            -->
-          </div>
-          <div class="about-image-accent"></div>
-        </div>
+          <img src="about-salon.png" alt="Queen College facial studio interior" class="about-image" />
+  <div class="about-image-accent"></div>
+</div>
 
         <div class="about-copy fade-up">
           <span class="eyebrow">Our Philosophy</span>
