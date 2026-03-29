@@ -1,318 +1,774 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Under Construction</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Queen College | 高端面部护理 · 新加坡裕廊东</title>
+  <meta name="description" content="Queen College 是位于新加坡裕廊东(Jurong East)的高端面部护理沙龙，专注于抗初老、胶原蛋白管理与长效肌肤焕新。" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
   <style>
+    /* ──────────────────────────────────────────
+       DESIGN TOKENS — 颜色与字体变量
+    ────────────────────────────────────────── */
     :root {
-      --bg: #0a0a0a;
-      --yellow: #f5e642;
-      --white: #f0ece0;
-      --stripe-dark: #111;
-      --stripe-yellow: #f5e642;
+      --gold:        #B8A75C;
+      --gold-light:  #d4c27e;
+      --gold-faint:  #f0ead6;
+      --white:       #FFFFFF;
+      --bg:          #f7f3f1;
+      --bg-card:     #faf7f5;
+      --text-dark:   #2c2420;
+      --text-mid:    #5a4f49;
+      --text-soft:   #8c7e78;
+      --border:      rgba(184,167,92,0.22);
+      --border-soft: rgba(44,36,32,0.08);
+
+      --serif:  'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
+      --sans:   'DM Sans', 'Noto Sans SC', sans-serif;
+
+      --radius:  4px;
+      --section: 100px;
     }
 
+    /* ──────────────────────────────────────────
+       RESET & BASE
+    ────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
     body {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.85; /* 增加中文行高，提升呼吸感 */
+      letter-spacing: 0.02em; /* 微调中文字距，避免粘连 */
+      color: var(--text-mid);
       background: var(--bg);
-      color: var(--white);
-      font-family: 'Space Mono', monospace;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a   { color: inherit; text-decoration: none; }
+
+    /* 响应式换行辅助类：专治中文断句不适 */
+    .br-desktop { display: block; }
+    .br-mobile { display: none; }
+    
+    @media (max-width: 768px) {
+      .br-desktop { display: inline; content: ' '; }
+      .br-mobile { display: block; }
+    }
+
+    /* ──────────────────────────────────────────
+       TYPOGRAPHY HELPERS
+    ────────────────────────────────────────── */
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    h1, h2, h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      color: var(--text-dark);
+      line-height: 1.4;
+      letter-spacing: 0.03em;
+    }
+
+    h1 { font-size: clamp(2.4rem, 7vw, 4.5rem); }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 24px; }
+    h3 { font-size: clamp(1.2rem, 3vw, 1.4rem); margin-bottom: 12px; font-weight: 500; }
+
+    p  { font-size: clamp(0.95rem, 2vw, 1.05rem); margin-bottom: 20px; }
+
+    /* ──────────────────────────────────────────
+       LAYOUT UTILITIES
+    ────────────────────────────────────────── */
+    .container {
+      width: 90%;
+      max-width: 1080px;
+      margin-inline: auto;
+    }
+
+    section { padding-block: var(--section); }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin-block: 20px;
+    }
+
+    /* ──────────────────────────────────────────
+       BUTTONS
+    ────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* Diagonal hazard stripes top bar */
-    .hazard-bar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 18px;
-      background: repeating-linear-gradient(
-        -45deg,
-        var(--stripe-yellow) 0px,
-        var(--stripe-yellow) 20px,
-        var(--stripe-dark) 20px,
-        var(--stripe-dark) 40px
-      );
-      z-index: 100;
-    }
-
-    .hazard-bar.bottom {
-      top: auto;
-      bottom: 0;
-    }
-
-    /* Scanline overlay */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: repeating-linear-gradient(
-        to bottom,
-        transparent 0px,
-        transparent 3px,
-        rgba(0,0,0,0.08) 3px,
-        rgba(0,0,0,0.08) 4px
-      );
-      pointer-events: none;
-      z-index: 50;
-    }
-
-    /* Noise grain */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: -200%;
-      width: 400%;
-      height: 400%;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      opacity: 0.4;
-      pointer-events: none;
-      z-index: 1;
-      animation: grain 0.4s steps(1) infinite;
-    }
-
-    @keyframes grain {
-      0%  { transform: translate(0, 0); }
-      20% { transform: translate(-3%, -5%); }
-      40% { transform: translate(5%, 2%); }
-      60% { transform: translate(-2%, 7%); }
-      80% { transform: translate(4%, -3%); }
-      100%{ transform: translate(0, 0); }
-    }
-
-    /* Main content */
-    .container {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      padding: 2rem;
-      max-width: 780px;
-    }
-
-    .icon-wrap {
-      margin-bottom: 2rem;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-12px); }
-    }
-
-    .gear-svg {
-      width: 90px;
-      height: 90px;
-      animation: spin 8s linear infinite;
-      filter: drop-shadow(0 0 18px rgba(245, 230, 66, 0.5));
-    }
-
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-
-    .label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.35em;
-      color: var(--yellow);
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.2s forwards;
-    }
-
-    h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(4rem, 12vw, 9rem);
-      line-height: 0.9;
-      letter-spacing: 0.02em;
-      color: var(--white);
-      margin-bottom: 0.4rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.4s forwards;
-    }
-
-    h1 span {
-      color: var(--yellow);
-      display: inline-block;
-      position: relative;
-    }
-
-    h1 span::after {
-      content: '';
-      position: absolute;
-      bottom: 4px; left: 0; right: 0;
-      height: 4px;
-      background: var(--yellow);
-    }
-
-    .tagline {
-      font-size: 0.8rem;
-      color: rgba(240, 236, 224, 0.5);
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
       letter-spacing: 0.1em;
-      margin-top: 1.6rem;
-      font-style: italic;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.6s forwards;
+      padding: 14px 32px;
+      border-radius: var(--radius);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
     }
 
-    /* Progress bar */
-    .progress-wrap {
-      margin-top: 2.8rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.8s forwards;
+    .btn-primary {
+      background: var(--gold);
+      color: var(--white);
+    }
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(184,167,92,0.25);
     }
 
-    .progress-meta {
+    .btn-outline {
+      background: transparent;
+      color: var(--text-dark);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* ──────────────────────────────────────────
+       NAVIGATION (与上一版一致，略)
+    ────────────────────────────────────────── */
+    #mainNav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(44,36,32,0.35); transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease; }
+    #mainNav.scrolled { background: rgba(247,243,241,0.96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 14px 0; box-shadow: 0 1px 0 var(--border-soft); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .nav-logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; color: var(--white); letter-spacing: 0.05em; transition: color 0.4s ease; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-logo-img { width: 36px; height: 36px; object-fit: contain; mix-blend-mode: screen; transition: opacity 0.4s ease; }
+    #mainNav.scrolled .nav-logo-img { mix-blend-mode: multiply; }
+    #mainNav.scrolled .nav-logo { color: var(--text-dark); }
+    .nav-links { display: flex; gap: 32px; list-style: none; justify-self: center; }
+    .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: rgba(255,255,255,0.85); transition: color 0.3s; }
+    #mainNav.scrolled .nav-links a { color: var(--text-mid); }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: var(--white); border: 1px solid rgba(255,255,255,0.4); padding: 9px 20px; border-radius: var(--radius); transition: all 0.3s ease; justify-self: end; }
+    .lang-switch { margin-left: 16px; font-size: 12px; letter-spacing: 0.1em; display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.7); }
+    #mainNav.scrolled .lang-switch { color: var(--text-mid); }
+    .lang-switch a { opacity: 0.6; transition: opacity 0.2s; }
+    .lang-switch a:hover { opacity: 1; }
+    .lang-switch .active { opacity: 1; font-weight: 500; color: var(--gold); }
+    #mainNav.scrolled .lang-switch .active { color: var(--gold); }
+    #mainNav.scrolled .nav-cta { color: var(--gold); border-color: var(--border); }
+    .nav-cta:hover { background: rgba(255,255,255,0.1); }
+    #mainNav.scrolled .nav-cta:hover { background: var(--gold-faint); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: all 0.3s ease; }
+    #mainNav.scrolled .hamburger span { background: var(--text-dark); }
+    .mobile-menu { display: none; flex-direction: column; background: rgba(247,243,241,0.98); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position: fixed; inset: 0; z-index: 99; align-items: center; justify-content: center; gap: 36px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    .mobile-menu.open { display: flex; opacity: 1; pointer-events: all; }
+    .mobile-menu a { font-family: var(--serif); font-size: 1.8rem; color: var(--text-dark); transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-close { position: absolute; top: 22px; right: 28px; font-size: 1.5rem; color: var(--text-dark); cursor: pointer; background: none; border: none; line-height: 1; }
+
+    /* ──────────────────────────────────────────
+       HERO 首屏排版优化
+    ────────────────────────────────────────── */
+    #hero {
+      min-height: 100svh;
       display: flex;
-      justify-content: space-between;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      color: rgba(240,236,224,0.4);
-      margin-bottom: 0.5rem;
-    }
-
-    .progress-track {
-      width: 100%;
-      height: 6px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 0;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 120px;
+      padding-bottom: clamp(56px, 8vw, 96px);
+      position: relative;
       overflow: hidden;
-      position: relative;
     }
 
-    .progress-fill {
-      height: 100%;
-      width: 0%;
-      background: var(--yellow);
-      animation: fill 2.5s cubic-bezier(0.4, 0, 0.2, 1) 1.2s forwards;
-      position: relative;
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('20260329%20QC%20Web%20BG.jpeg') no-repeat center center;
+      background-size: cover;
     }
 
-    .progress-fill::after {
+    .hero-bg::after {
       content: '';
       position: absolute;
-      right: 0; top: 0;
-      width: 30px; height: 100%;
-      background: white;
-      opacity: 0.6;
-      filter: blur(4px);
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
     }
 
-    @keyframes fill {
-      to { width: 67%; }
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-tagline {
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      color: var(--gold-light);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    /* Blink cursor */
-    .cursor {
-      display: inline-block;
-      width: 2px;
-      height: 1em;
-      background: var(--yellow);
-      vertical-align: middle;
-      margin-left: 4px;
-      animation: blink 1s step-start infinite;
+    .hero-tagline::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold-light);
     }
 
-    @keyframes blink {
-      50% { opacity: 0; }
+    .hero-title {
+      color: var(--gold);
+      margin-bottom: 16px;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.2);
     }
 
-    /* Status line */
-    .status {
-      margin-top: 2rem;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      color: rgba(240,236,224,0.3);
-      text-transform: uppercase;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 1s forwards;
+    .hero-subtitle {
+      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      color: rgba(97,72,65,0.9);
+      margin-bottom: 24px;
     }
 
-    .dot {
-      display: inline-block;
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--yellow);
-      margin-right: 6px;
-      animation: pulse 1.5s ease-in-out infinite;
+    .hero-desc {
+      /* 限制宽度，防止阅读跳行 */
+      max-width: 520px; 
+      margin-bottom: 48px;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.4; transform: scale(0.7); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+
+    /* ──────────────────────────────────────────
+       ABOUT 品牌故事排版优化
+    ────────────────────────────────────────── */
+    #about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px; /* 增加图文间距 */
+      align-items: center;
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+    .about-image-wrap { position: relative; }
+    .about-image {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 2px;
+      display: block;
+    }
+    .about-image-accent {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 60%;
+      aspect-ratio: 1;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      z-index: -1;
     }
 
-    /* Corner decorations */
-    .corner {
-      position: fixed;
-      width: 40px; height: 40px;
-      border-color: rgba(245,230,66,0.25);
-      border-style: solid;
-      z-index: 10;
+    .about-copy { padding-block: 16px; max-width: 480px; /* 限制中文段落宽度 */ }
+    
+    .stat-row {
+      display: flex;
+      gap: 40px;
+      padding-top: 36px;
+      margin-top: 40px;
+      border-top: 1px solid var(--border-soft);
     }
-    .corner.tl { top: 28px; left: 16px; border-width: 2px 0 0 2px; }
-    .corner.tr { top: 28px; right: 16px; border-width: 2px 2px 0 0; }
-    .corner.bl { bottom: 28px; left: 16px; border-width: 0 0 2px 2px; }
-    .corner.br { bottom: 28px; right: 16px; border-width: 0 2px 2px 0; }
+    .stat-num { font-family: var(--serif); font-size: 2.2rem; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+    .stat-label { font-size: 12px; letter-spacing: 0.05em; color: var(--text-soft); }
+
+    /* ──────────────────────────────────────────
+       SERVICES 卡片区排版优化
+    ────────────────────────────────────────── */
+    #services { background: var(--bg); }
+
+    .section-head { 
+      max-width: 600px; 
+      margin-bottom: 64px; 
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      padding: 56px 48px; /* 增加卡片内部呼吸感 */
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s ease;
+    }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 0; background: var(--gold); transition: height 0.4s ease; }
+    .service-card:hover { background: var(--white); }
+    .service-card:hover::before { height: 100%; }
+
+    .service-num { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-faint); line-height: 1; margin-bottom: 24px; transition: color 0.3s; }
+    .service-card:hover .service-num { color: rgba(184,167,92,0.18); }
+
+    .service-card p {
+      margin-bottom: 0; /* 卡片内最后一段不要 margin */
+      max-width: 400px;
+    }
+
+    /* ──────────────────────────────────────────
+       PHILOSOPHY 引言排版优化
+    ────────────────────────────────────────── */
+    #philosophy {
+      background: var(--text-dark);
+      padding-block: 100px;
+    }
+    .philosophy-inner { text-align: center; }
+    .philosophy-quote {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      color: var(--white);
+      max-width: 680px;
+      margin-inline: auto;
+      line-height: 1.7; /* 针对大号字体调整行高 */
+    }
+    .philosophy-quote em { font-style: normal; color: var(--gold-light); }
+    .philosophy-attr { margin-top: 32px; font-size: 12px; letter-spacing: 0.1em; color: rgba(255,255,255,0.45); }
+
+    /* ──────────────────────────────────────────
+       WHY US 优势排版优化
+    ────────────────────────────────────────── */
+    #why { background: var(--white); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 56px 48px; /* 增加上下间距 */
+      margin-top: 64px;
+    }
+    .why-item { padding-top: 32px; border-top: 1px solid var(--border-soft); transition: border-color 0.3s; }
+    .why-item:hover { border-color: var(--gold); }
+    .why-icon { width: 40px; height: 40px; margin-bottom: 24px; }
+    .why-item p { margin-bottom: 0; }
+
+    /* ──────────────────────────────────────────
+       REVIEWS 口碑排版优化
+    ────────────────────────────────────────── */
+    #reviews { background: var(--white); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+    .review-card { background: var(--bg-card); padding: 40px 32px; border-radius: var(--radius); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .review-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); }
+    .review-stars { color: var(--gold); font-size: 14px; letter-spacing: 0.15em; margin-bottom: 20px; }
+    .review-text { font-size: 0.98rem; margin-bottom: 24px; font-style: italic; } /* 加一点斜体区分语境 */
+    .review-name { font-size: 12px; color: var(--text-soft); }
+
+    /* ──────────────────────────────────────────
+       CONTACT / FOOTER (与上一版一致，略加微调)
+    ────────────────────────────────────────── */
+    #contact { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .info-block { margin-bottom: 32px; }
+    .info-label { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 8px; }
+    .contact-map { background: linear-gradient(145deg, #e2dcd6, #cfc7be); aspect-ratio: 1 / 1.05; border-radius: 2px; position: relative; overflow: hidden; }
+    .contact-cta { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 16px; }
+
+    footer { background: var(--text-dark); padding: 80px 0 40px; }
+    .footer-inner { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+    .footer-logo { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; color: var(--white); letter-spacing: 0.05em; margin-bottom: 4px; }
+    .footer-tagline { font-size: 12px; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 32px; }
+    .footer-links { display: flex; gap: 32px; margin-bottom: 36px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-social { display: flex; gap: 16px; margin-bottom: 48px; }
+    .footer-social a { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); font-size: 16px; transition: all 0.3s; }
+    .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+    .footer-bottom { width: 100%; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; font-size: 12px; color: rgba(255,255,255,0.3); }
+
+    /* ──────────────────────────────────────────
+       ANIMATIONS & RESPONSIVE
+    ────────────────────────────────────────── */
+    .fade-up { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      :root { --section: 80px; }
+      .about-grid { grid-template-columns: 1fr; gap: 56px; }
+      .about-image-wrap { max-width: 480px; margin: 0 auto; }
+      .services-grid { grid-template-columns: 1fr; gap: 2px; }
+      .why-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 56px; }
+      .reviews-grid { grid-template-columns: 1fr; gap: 24px; }
+      .nav-links, .nav-cta, .lang-switch { display: none; }
+      .hamburger { display: flex; }
+      
+      /* 手机端重置宽度限制 */
+      .about-copy, .section-head, .philosophy-quote { max-width: 100%; }
+    }
+
+    @media (max-width: 600px) {
+      :root { --section: 64px; }
+      h1 { font-size: 2.8rem; }
+      h2 { font-size: 1.8rem; }
+      .why-grid { grid-template-columns: 1fr; gap: 32px; }
+      .stat-row { gap: 24px; flex-wrap: wrap; }
+      .service-card { padding: 40px 24px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; width: 100%; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      .contact-cta { flex-direction: column; }
+      .contact-cta .btn { justify-content: center; width: 100%; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+    }
   </style>
 </head>
+
 <body>
 
-  <div class="hazard-bar"></div>
-  <div class="hazard-bar bottom"></div>
-
-  <div class="corner tl"></div>
-  <div class="corner tr"></div>
-  <div class="corner bl"></div>
-  <div class="corner br"></div>
-
-  <div class="container">
-    <div class="icon-wrap">
-      <!-- Gear SVG -->
-      <svg class="gear-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#f5e642" d="
-          M43 5h14l2 10a32 32 0 0 1 8.3 3.4l9-5 9.9 9.9-5 9A32 32 0 0 1 85 41l10 2v14l-10 2a32 32 0 0 1-3.4 8.3l5 9-9.9 9.9-9-5A32 32 0 0 1 59 85l-2 10H43l-2-10a32 32 0 0 1-8.3-3.4l-9 5-9.9-9.9 5-9A32 32 0 0 1 15 59L5 57V43l10-2a32 32 0 0 1 3.4-8.3l-5-9 9.9-9.9 9 5A32 32 0 0 1 41 15z
-        "/>
-        <circle cx="50" cy="50" r="16" fill="#0a0a0a"/>
-        <circle cx="50" cy="50" r="10" fill="#f5e642" opacity="0.2"/>
-      </svg>
-    </div>
-
-    <div class="label">// status update</div>
-
-    <h1>SITE <span>UNDER</span><br>CONSTRUCTION</h1>
-
-    <p class="tagline">something extraordinary is being built — check back soon<span class="cursor"></span></p>
-
-    <div class="progress-wrap">
-      <div class="progress-meta">
-        <span>BUILD PROGRESS</span>
-        <span>67%</span>
+  <nav id="mainNav">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-logo">
+        <img src="QC%20logo%20background%20transp.png" alt="Queen College Logo" class="nav-logo-img" />
+        Queen College
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">品牌故事</a></li>
+        <li><a href="#services">招牌项目</a></li>
+        <li><a href="#why">选择我们</a></li>
+        <li><a href="#reviews">真实口碑</a></li>
+        <li><a href="#contact">联系到店</a></li>
+      </ul>
+      <a href="https://wa.me/6580423758?text=你好，我想咨询/预约面部护理时间" class="nav-cta" target="_blank" rel="noopener">即刻预约</a>
+       <div class="lang-switch">
+          <a href="index.html" class="lang">EN</a>
+        <span>/</span>
+      <a href="cn.html" class="lang active">中文</a>
       </div>
-      <div class="progress-track">
-        <div class="progress-fill"></div>
+      <div class="hamburger" id="hamburger" role="button" aria-label="打开菜单">
+        <span></span><span></span><span></span>
       </div>
     </div>
+  </nav>
 
-    <div class="status">
-      <span class="dot"></span>systems online &nbsp;·&nbsp; crew at work &nbsp;·&nbsp; launching soon
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose" aria-label="关闭菜单">✕</button>
+    <a href="#about"    onclick="closeMobile()">品牌故事</a>
+    <a href="#services" onclick="closeMobile()">招牌项目</a>
+    <a href="#why"      onclick="closeMobile()">选择我们</a>
+    <a href="#reviews"  onclick="closeMobile()">真实口碑</a>
+    <a href="#contact"  onclick="closeMobile()">联系到店</a>
+    <div style="display:flex; gap:20px; margin-top:10px;">
+        <a href="index.html" onclick="closeMobile()" style="font-size:1.2rem; font-family:var(--sans);">EN</a>
+        <a href="cn.html" onclick="closeMobile()" style="font-size:1.2rem; font-family:var(--sans); color:var(--gold);">中文</a>
     </div>
+    <a href="https://wa.me/6580423758" target="_blank" rel="noopener" style="color:var(--gold); font-size:1.4rem; margin-top:20px; font-family:var(--sans);">WhatsApp 预约咨询</a>
   </div>
+
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content container">
+      <p class="hero-tagline">高端面部护理 · 新加坡裕廊东</p>
+      <h1 class="hero-title">Queen College</h1>
+      
+      <p class="hero-subtitle">科学“训”肤，<br class="br-mobile">唤醒自然透亮光采。</p>
+      <p class="hero-desc">
+        拒绝短暂的表面功夫。<br class="br-desktop">我们专为渴望真实、持久改善的女性，<br class="br-desktop">打造循序渐进的抗初老与胶原蛋白管理方案。
+      </p>
+      
+      <div class="hero-actions">
+        <a href="https://wa.me/6580423758?text=你好，我想咨询/预约面部护理时间" class="btn btn-primary" target="_blank" rel="noopener">
+          预约专属时间
+        </a>
+        <a href="https://wa.me/6580423758" class="btn btn-outline" target="_blank" rel="noopener" style="font-family: var(--sans);"> 
+          💬 WhatsApp 咨询
+        </a>
+      </div>
+    </div>
+    <div class="scroll-hint">向下滑动探索</div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-wrap fade-up">
+          <img src="about-salon.png" alt="Queen College 舒适静谧的护理空间" class="about-image" />
+          <div class="about-image-accent"></div>
+        </div>
+
+        <div class="about-copy fade-up">
+          <span class="eyebrow">品牌哲学</span>
+          <div class="divider"></div>
+          <h2>护肤不仅是涂抹，<br>更是一场“肌肤训练”。</h2>
+
+          <p>
+            Queen College 的创立源于一个简单的信念：肌肤不该被“急救”，而应该被“引导”。通过专业的手法、对的仪器和持续的周期管理，我们帮助您的肌肤学会自我修护与更新。
+          </p>
+          <p>
+            我们专注温和抗衰与胶原蛋白唤醒。每一次护理，都是在为上一次的效果打底加固——让你看到的不只是做完脸当天的水润，而是日益紧致、年轻的底气。
+          </p>
+          <p>
+            在这里，我们安静做事，细致呵护。没有容貌焦虑的套路，没有推销的压迫感，只有专属于您的治愈时刻。
+          </p>
+
+          <a href="#services" class="btn btn-outline" style="margin-top: 12px;">探索招牌项目</a>
+
+          <div class="stat-row">
+            <div class="stat-item">
+              <div class="stat-num">8+</div>
+              <div class="stat-label">年深耕美业</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">500+</div>
+              <div class="stat-label">熟客信赖</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num">100%</div>
+              <div class="stat-label">零推销压力</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-head fade-up">
+        <span class="eyebrow">精心打磨的护理体系</span>
+        <div class="divider"></div>
+        <h2>每一次护理，<br class="br-mobile">都在为未来的好皮肤存钱</h2>
+        <p>我们会根据您当天的肌肤状态，灵活调整或定制最适合您的护理方案。</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <div class="service-num">01</div>
+          <h3>抗初老焕颜护理</h3>
+          <p>多维靶向抗老，深入肌底提拉紧致。专为应对初期及熟龄老化痕迹设计，让轮廓线条不仅看得见提升，更摸得到紧实弹润。</p>
+        </div>
+
+        <div class="service-card fade-up">
+          <div class="service-num">02</div>
+          <h3>胶原蛋白“私教课”</h3>
+          <p>我们的口碑王牌。通过系统化的周期管理，真正激活自身胶原蛋白再生，从根本改善松弛与凹陷，让皮肤越“训”越年轻。</p>
+        </div>
+
+        <div class="service-card fade-up">
+          <div class="service-num">03</div>
+          <h3>透亮焕白与修护</h3>
+          <p>温和剥脱老废角质，精准击退暗沉，同步强韧肌肤屏障。非常适合熬夜暗哑、肤色不均或日晒后的深度急救与提亮。</p>
+        </div>
+
+        <div class="service-card fade-up">
+          <div class="service-num">04</div>
+          <h3>深层维稳舒缓保养</h3>
+          <p>适合在深度项目间歇期进行的“慢节奏”保养。针对泛红、敏感或压力肌，提供极致的镇静与补水，让肌肤回归健康节律。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="philosophy">
+    <div class="container philosophy-inner fade-up">
+      <p class="philosophy-quote">
+        “好皮肤从来不是一夜速成，<br class="br-mobile">它藏在你的<em>耐心、坚持</em><br class="br-mobile">和每一次对的护理里。”
+      </p>
+      <p class="philosophy-attr">— Queen College 护肤主理人</p>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="container">
+      <div class="section-head fade-up">
+        <span class="eyebrow">与众不同的体验</span>
+        <div class="divider"></div>
+        <h2>把宝贵的时间，<br class="br-mobile">留给值得的自己</h2>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-item fade-up">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="#B8A75C"><circle cx="18" cy="18" r="17" stroke-width="1"/><path d="M11 18.5l5 5 9-10" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>看得见的“长期复利”</h3>
+          <p>拒绝做完就打回原形的项目。我们为您规划护肤路径，让每一次到店都成为您变美路上的真实进阶。</p>
+        </div>
+
+        <div class="why-item fade-up">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="#B8A75C"><circle cx="18" cy="18" r="17" stroke-width="1"/><path d="M18 10v8l5 3" stroke-width="1.2" stroke-linecap="round"/></svg>
+          <h3>懂你生活节奏的效率</h3>
+          <p>专为忙碌职场女性设计。没有繁冗无效的流程，每一分钟都在发挥作用，让您焕然一新地离开。</p>
+        </div>
+
+        <div class="why-item fade-up">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="#B8A75C"><circle cx="18" cy="18" r="17" stroke-width="1"/><path d="M14 20c0-2 1.5-3.5 4-3.5s4 1.5 4 3.5" stroke-width="1.2" stroke-linecap="round"/><circle cx="18" cy="13" r="2" stroke-width="1"/></svg>
+          <h3>绝不推销，只给建议</h3>
+          <p>坚持真诚沟通。我们只提供客观专业的护肤建议，您绝不会在这里感受到任何办卡逼单的压力。</p>
+        </div>
+
+        <div class="why-item fade-up">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="#B8A75C"><circle cx="18" cy="18" r="17" stroke-width="1"/><path d="M13 16.5s1-4.5 5-4.5 5 4.5 5 4.5v7h-10v-7z" stroke-width="1" stroke-linejoin="round"/></svg>
+          <h3>治愈系的沉浸空间</h3>
+          <p>精心布置的私密护理室。舒适、洁净、静谧，伴随着轻柔的安神香氛，在这里卸下疲惫，睡个好觉。</p>
+        </div>
+
+        <div class="why-item fade-up">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="#B8A75C"><circle cx="18" cy="18" r="17" stroke-width="1"/><path d="M18 11l1.8 3.6 4 .6-2.9 2.8.7 4L18 20l-3.6 2 .7-4L12.2 15l4-.6z" stroke-width="1" stroke-linejoin="round"/></svg>
+          <h3>死磕抗衰的技术派</h3>
+          <p>比起花哨的噱头，我们更注重底层逻辑。主攻真皮层胶原焕活，让皮肤由内而外透出紧致与强韧。</p>
+        </div>
+
+        <div class="why-item fade-up">
+          <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="#B8A75C"><circle cx="18" cy="18" r="17" stroke-width="1"/><path d="M12 22c0-4 2.5-7 6-7s6 3 6 7" stroke-width="1.2" stroke-linecap="round"/><line x1="18" y1="12" x2="18" y2="13.5" stroke-width="1.2" stroke-linecap="round"/><line x1="13.5" y1="13.5" x2="14.5" y2="14.5" stroke-width="1.2" stroke-linecap="round"/><line x1="22.5" y1="13.5" x2="21.5" y2="14.5" stroke-width="1.2" stroke-linecap="round"/></svg>
+          <h3>西部白领的私藏宝藏</h3>
+          <p>坐落于交通便利的 Jurong East，让居住或工作在西部的姐妹们，下班后能轻松赴一场美丽之约。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="container">
+      <div class="section-head fade-up">
+        <span class="eyebrow">真实口碑</span>
+        <div class="divider"></div>
+        <h2>她们的变美体验</h2>
+        <p>来自每一位信任 Queen College 的客人的真实评价。</p>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card fade-up">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            “从去年底开始找 Joan 做护理，真的完美解决了我的背痛和水肿问题。她非常专业，手法一绝！真心建议大家来体验一次，你一定会爱上这里。”
+          </p>
+          <div class="review-name">— Kalyn (Google 评价)</div>
+        </div>
+
+        <div class="review-card fade-up">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            “每个月都会雷打不动来做抗蓝光面部护理。Elaine 态度超级好又温柔，而且这边的价格一直都很公道透明，完全没有乱收费。”
+          </p>
+          <div class="review-name">— Chan ZX (Google 评价)</div>
+        </div>
+
+        <div class="review-card fade-up">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            “我在这里 facial 已经 2 年了，每一次的面部护理过程都非常享受。最喜欢海藻项目，让我的闭口好了不少，脸也感觉很滋润清爽。”
+          </p>
+          <div class="review-name">— Chein Jacks (Google 评价)</div>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:56px;">
+        <a href="https://www.google.com/search?q=Queen+College+Singapore+Reviews" target="_blank" class="btn btn-outline" rel="noopener">
+          在 Google 查看更多评价
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info fade-up">
+          <span class="eyebrow">期待与你相见</span>
+          <div class="divider"></div>
+          <h2>联系我们</h2>
+          <p>为了保证您能享受到最完整、无需等待的专属服务，<br class="br-desktop">建议您提前通过电话或 WhatsApp 预约时间。</p>
+
+          <div class="info-block">
+            <div class="info-label">门店地址</div>
+            <div class="info-value">
+              3 Gateway Dr, #04-12, Westgate<br>
+              Singapore 608532<br>
+              <span style="color:var(--text-soft); font-size:0.9em;">(靠近 Jurong East MRT D出口)</span>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-label">营业时间</div>
+            <div class="info-value">周一至周日：10:00 am – 9:00 pm</div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-label">WhatsApp 专线</div>
+            <div class="info-value">
+              <a href="https://wa.me/6580423758" target="_blank" rel="noopener" style="font-family: var(--sans);">+65 8042 3758</a>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-label">关注我们</div>
+            <div class="social-row">
+              <a href="https://instagram.com/queencollegesg" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg></a>
+              <a href="https://facebook.com/queencollegesg" target="_blank" rel="noopener" class="social-link" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+              <a href="https://wa.me/6580423758" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+            </div>
+          </div>
+
+          <div class="contact-cta">
+            <a href="https://wa.me/6580423758?text=你好，我想咨询/预约面部护理时间" class="btn btn-primary" target="_blank" rel="noopener">
+              一键发送 WhatsApp
+            </a>
+            <a href="tel:+6580423758" class="btn btn-outline">直接拨打电话</a>
+          </div>
+        </div>
+
+        <div class="contact-map fade-up">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.77586561234!2d103.73977!3d1.33475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da10631d8e138b%3A0xc3fec3f33668f447!2sWestgate!5e0!3m2!1sen!2ssg!4v1700000000000!5m2!1sen!2ssg" width="100%" height="100%" style="border:0; display:block; min-height:360px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <img src="QC%20logo%20background%20transp.png" alt="Queen College Logo" style="width:56px;height:56px;object-fit:contain;border-radius:50%;margin-bottom:12px;opacity:0.85;" />
+      <div class="footer-logo">Queen College</div>
+      <div class="footer-tagline">科学“训”肤，唤醒自然透亮光采。</div>
+
+      <nav class="footer-links" aria-label="底部导航">
+        <a href="#about">品牌故事</a>
+        <a href="#services">招牌项目</a>
+        <a href="#why">选择我们</a>
+        <a href="#reviews">真实口碑</a>
+        <a href="#contact">联系到店</a>
+      </nav>
+
+      <div class="footer-social">
+        <a href="https://instagram.com/queencollegesg" target="_blank" rel="noopener" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://facebook.com/queencollegesg" target="_blank" rel="noopener" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://wa.me/6580423758" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+      </div>
+
+      <div class="footer-bottom">
+        © 2026 Queen College · queencollegesg.com · Jurong East, Singapore
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+    hamburger.addEventListener('click', () => { mobileMenu.classList.add('open'); document.body.style.overflow = 'hidden'; });
+    mobileClose.addEventListener('click', closeMobile);
+    function closeMobile() { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }}); }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    fadeEls.forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
