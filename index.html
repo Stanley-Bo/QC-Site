@@ -242,7 +242,28 @@
       transition: all 0.3s ease;
       justify-self: end;
     }
+.lang-switch {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.7);
+}
 
+#mainNav.scrolled .lang-switch {
+  color: var(--text-mid);
+}
+
+.lang-switch a {
+  text-decoration: none;
+  opacity: 0.6;
+}
+
+.lang-switch .active {
+  opacity: 1;
+  font-weight: 500;
+}
     #mainNav.scrolled .nav-cta {
       color: var(--gold);
       border-color: var(--border);
@@ -991,7 +1012,12 @@ background-position: center center;
         <li><a href="#why">Why Us</a></li>
         <li><a href="#contact">Visit Us</a></li>
       </ul>
-
+    <!-- 👇 加在這裡 -->
+      <div class="lang-switch">
+      <a href="index.html" class="lang active">EN</a>
+      <span>/</span>
+      <a href="cn.html" class="lang">CN</a>
+      </div>
       <!-- ✏️ REPLACE: update this WhatsApp number -->
       <a href="https://wa.me/6580423758?text=Hi%20Queen%20College%2C%20I'd%20like%20to%20book%20an%20appointment"
          class="nav-cta" target="_blank" rel="noopener">Book Now</a>
