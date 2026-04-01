@@ -235,6 +235,160 @@
       color: var(--text-soft); margin-left: auto;
     }
 
+
+    /* ── FEATURED CAROUSEL ── */
+    #featuredOffers {
+      padding: 48px 0 24px;
+      background: var(--white);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .featured-head { margin-bottom: 28px; }
+    .featured-head h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom: 10px;
+    }
+    .featured-head p {
+      color: var(--text-soft);
+      max-width: 560px;
+    }
+    .carousel-shell { position: relative; }
+    .carousel-track {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding-bottom: 8px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(184,167,92,0.45) transparent;
+    }
+    .carousel-track::-webkit-scrollbar { height: 8px; }
+    .carousel-track::-webkit-scrollbar-thumb {
+      background: rgba(184,167,92,0.45);
+      border-radius: 999px;
+    }
+    .carousel-card {
+      flex: 0 0 min(360px, 78vw);
+      scroll-snap-align: start;
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(44,36,32,0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .carousel-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 36px rgba(44,36,32,0.08);
+    }
+    .carousel-poster {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: linear-gradient(145deg, #e8e0d4, #d4c9bb);
+      cursor: zoom-in;
+    }
+    .carousel-poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+    .carousel-poster:hover img { transform: scale(1.03); }
+    .carousel-body { padding: 18px 18px 20px; }
+    .carousel-month {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .carousel-title {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+    .carousel-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .carousel-tag {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text-soft);
+    }
+    .carousel-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .carousel-btn {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      border-radius: var(--radius);
+      transition: all 0.25s ease;
+    }
+    .carousel-btn-primary {
+      background: var(--gold);
+      color: var(--white);
+    }
+    .carousel-btn-primary:hover { background: var(--gold-light); }
+    .carousel-btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text-dark);
+    }
+    .carousel-btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .carousel-shell {
+      position: relative;
+      padding: 0 52px;
+    }
+    .carousel-arrow {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      box-shadow: 0 2px 12px rgba(44,36,32,0.10);
+    }
+    .carousel-arrow:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: var(--gold-faint);
+    }
+    .carousel-arrow-left  { left: 0; }
+    .carousel-arrow-right { right: 0; }
+    @media (max-width: 600px) {
+      .carousel-shell { padding: 0 36px; }
+      .carousel-arrow { width: 32px; height: 32px; }
+    }
+
     /* ── OFFERS SECTION ── */
     #offersSection { padding: 56px 0 96px; }
 
@@ -411,6 +565,38 @@
 .lightbox-cta:hover {
   background: rgba(255,255,255,0.1);
 }
+
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(44,36,32,0.5);
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+.lightbox-arrow:hover {
+  background: rgba(44,36,32,0.75);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.lightbox-arrow-left  { left: 20px; }
+.lightbox-arrow-right { right: 20px; }
+.lightbox-arrow.hidden { opacity: 0.2; pointer-events: none; }
+@media (max-width: 600px) {
+  .lightbox-arrow-left  { left: 8px; }
+  .lightbox-arrow-right { right: 8px; }
+}
     /* ── EMPTY STATE ── */
     .empty-state { display: none; text-align: center; padding: 80px 0; }
     .empty-state.visible { display: block; }
@@ -458,6 +644,26 @@
     .fade-up { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .carousel-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .carousel-dot.active {
+      background: var(--gold);
+      transform: scale(1.4);
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .nav-links, .nav-cta, .lang-switch { display: none; }
@@ -472,6 +678,7 @@
       .offer-title   { font-size: 1.1rem; }
       .quarter-header { padding: 16px 20px; }
       .quarter-body  { padding: 20px; }
+      .carousel-card { flex-basis: 82vw; }
       .footer-links  { flex-wrap: wrap; justify-content: center; gap: 16px; }
     }
   </style>
@@ -494,7 +701,7 @@
         <li><a href="index.html#contact">Visit Us</a></li>
         <li><a href="offers.html" class="active">Offers</a></li>
       </ul>
-      <a href="https://wa.me/6580423758"
+      <a href="https://wa.me/6580423758?text=Hi%20Queen%20College%2C%20I%27d%20like%20to%20book%20an%20appointment"
          class="nav-cta" target="_blank" rel="noopener">Book Now</a>
       <div class="lang-switch">
         <a href="offers.html" class="lang active">EN</a>
@@ -517,7 +724,7 @@
     <a href="offers.html"         onclick="closeMobile()" style="color:var(--gold)">Offers</a>
     <a href="offers.html">EN</a>
     <a href="cn-offers.html">中文</a>
-    <a href="https://wa.me/6580423758" target="_blank" rel="noopener" style="color:var(--gold)">Book Now</a>
+    <a href="https://wa.me/6580423758?text=Hi%20Queen%20College%2C%20I%27d%20like%20to%20book%20an%20appointment" target="_blank" rel="noopener" style="color:var(--gold)">Book Now</a>
   </div>
 
 
@@ -530,6 +737,84 @@
       <p>Current and past offers — search by treatment or filter by category.</p>
     </div>
   </div>
+
+
+
+  <!-- ══ FEATURED OFFERS ══ -->
+  <section id="featuredOffers">
+    <div class="container">
+      <div class="featured-head">
+        <span class="eyebrow">Featured Offers</span>
+        <div class="divider"></div>
+        <h2>Current highlights</h2>
+        <p>Our latest promotions — tap any card to view full details or book directly.</p>
+      </div>
+
+        <div class="carousel-shell">
+          <button class="carousel-arrow carousel-arrow-left" type="button" onclick="scrollFeatured(-1)" aria-label="Previous">←</button>
+          <div class="carousel-track" id="featuredTrack">
+
+          <article class="carousel-card">
+            <div class="carousel-poster" onclick="openCarouselLightbox('offers/20260401-Promo-Masterposter.png', 'Underarm Skin Reset')">
+              <img src="offers/20260401-Promo-Masterposter.png" alt="Underarm Skin Reset" loading="lazy" />
+            </div>
+            <div class="carousel-body">
+              <div class="carousel-month">April 2026</div>
+              <div class="carousel-title">Underarm Skin Reset</div>
+              <div class="carousel-tags">
+                <span class="carousel-tag">Underarm Hair Removal</span>
+                <span class="carousel-tag">Brightening</span>
+              </div>
+              <div class="carousel-actions">
+                <a href="https://wa.me/6580423758?text=Hi%20Queen%20College%2C%20I%27d%20like%20to%20book%20an%20appointment" class="carousel-btn carousel-btn-primary" target="_blank" rel="noopener">Book Now</a>
+                <a href="javascript:void(0)" class="carousel-btn carousel-btn-outline" onclick="openCarouselLightbox('offers/20260401-Promo-Masterposter.png', 'Underarm Skin Reset')">See Details</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="carousel-card">
+            <div class="carousel-poster" onclick="openCarouselLightbox('offers/20260401-Promo-Masterposter.png', 'Underarm Brightening Focus')">
+              <img src="offers/20260401-Promo-Masterposter.png" alt="Underarm Brightening Focus" loading="lazy" />
+            </div>
+            <div class="carousel-body">
+              <div class="carousel-month">April 2026</div>
+              <div class="carousel-title">Underarm Brightening Focus</div>
+              <div class="carousel-tags">
+                <span class="carousel-tag">Brightening</span>
+                <span class="carousel-tag">Skin Renewal</span>
+              </div>
+              <div class="carousel-actions">
+                <a href="https://wa.me/6580423758?text=Hi%20Queen%20College%2C%20I%27d%20like%20to%20book%20an%20appointment" class="carousel-btn carousel-btn-primary" target="_blank" rel="noopener">Book Now</a>
+                <a href="javascript:void(0)" class="carousel-btn carousel-btn-outline" onclick="openCarouselLightbox('offers/20260401-Promo-Masterposter.png', 'Underarm Brightening Focus')">See Details</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="carousel-card">
+            <div class="carousel-poster" onclick="openCarouselLightbox('offers/20260401-Promo-Masterposter.png', 'Complete Care')">
+              <img src="offers/20260401-Promo-Masterposter.png" alt="Complete Care" loading="lazy" />
+            </div>
+            <div class="carousel-body">
+              <div class="carousel-month">April 2026</div>
+              <div class="carousel-title">Complete Care</div>
+              <div class="carousel-tags">
+                <span class="carousel-tag">Hair Removal</span>
+                <span class="carousel-tag">Brightening</span>
+              </div>
+              <div class="carousel-actions">
+                <a href="https://wa.me/6580423758?text=Hi%20Queen%20College%2C%20I%27d%20like%20to%20book%20an%20appointment" class="carousel-btn carousel-btn-primary" target="_blank" rel="noopener">Book Now</a>
+                <a href="javascript:void(0)" class="carousel-btn carousel-btn-outline" onclick="openCarouselLightbox('offers/20260401-Promo-Masterposter.png', 'Complete Care')">See Details</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+          <button class="carousel-arrow carousel-arrow-right" type="button" onclick="scrollFeatured(1)" aria-label="Next">→</button>
+          <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <!-- ══ FILTER BAR ══ -->
@@ -558,55 +843,7 @@
   <section id="offersSection">
     <div class="container">
       <div id="allGroups">
-
-        <!--
-        ┌─────────────────────────────────────────────────────┐
-        │  TO ADD A NEW QUARTER — paste this block on top:    │
-        │                                                     │
-        │  <div class="quarter-group fade-up"                 │
-        │       data-quarter="Q3-2026">                       │
-        │    <div class="quarter-header"                      │
-        │         onclick="toggleQuarter(this)">              │
-        │      <span class="quarter-label">                   │
-        │        Q3 2026 &nbsp;·&nbsp; Jul – Sep              │
-        │      </span>                                        │
-        │      <div class="quarter-meta">                     │
-        │        <span class="quarter-count"                  │
-        │              id="count-Q3-2026">0 offers</span>     │
-        │        <svg class="quarter-chevron" .../>           │
-        │      </div>                                         │
-        │    </div>                                           │
-        │    <div class="quarter-body">                       │
-        │      <!-- offer rows go here -->                                                                                         
-        
-  
- <!--
-        ┌─────────────────────────────────────────────────────┐
-        │  TO ADD A NEW OFFER ROW — paste inside              │
-        │  the correct quarter's .quarter-body, on top:       │
-        │                                                     │
-        │  <div class="offer-row"                             │
-        │       data-tags="anti-ageing collagen"              │
-        │       data-title="Your Treatment Name"              │
-        │       data-quarter="Q2-2026">                       │
-        │    <div class="offer-thumb-wrap"                    │
-        │         onclick="openLightbox(this)">               │
-        │      <img src="offers/filename.jpg"                 │
-        │           alt="Treatment Name" loading="lazy" />    │
-        │      <div class="zoom-hint">...</div>               │
-        │    </div>                                           │
-        │    <div class="offer-info">                         │
-        │      <div class="offer-month">April 2026</div>      │
-        │      <div class="offer-title">Treatment Name</div>  │
-        │      <div class="offer-tags">                       │
-        │        <span class="offer-tag">Anti-Ageing</span>   │
-        │      </div>                                         │
-        │    </div>                                           │
-        │  </div>                                             │
-        └─────────────────────────────────────────────────────┘
-        -->
-
-
+          
         <!-- ════════ Q2 2026  (newest on top) ════════ -->
         <div class="quarter-group fade-up" data-quarter="Q2-2026">
           <div class="quarter-header" onclick="toggleQuarter(this)">
@@ -725,6 +962,8 @@
   <!-- ══ LIGHTBOX ══ -->
  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+  <button class="lightbox-arrow lightbox-arrow-left" id="lbPrev" onclick="event.stopPropagation(); lbNav(-1)" aria-label="Previous">←</button>
+  <button class="lightbox-arrow lightbox-arrow-right" id="lbNext" onclick="event.stopPropagation(); lbNav(1)" aria-label="Next">→</button>
 
   <div class="lightbox-content" onclick="event.stopPropagation()">
     <img class="lightbox-img" id="lightboxImg" src="" alt="" />
@@ -733,7 +972,7 @@
       <div class="lightbox-title" id="lightboxTitle"></div>
 
       <a id="lightboxCTA"
-         href="https://wa.me/6580423758"
+         href="https://wa.me/6580423758?text=Hi%20Queen%20College%2C%20I%27d%20like%20to%20book%20an%20appointment"
          target="_blank"
          class="lightbox-cta">
         Book via WhatsApp
@@ -771,7 +1010,7 @@
             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
           </svg>
         </a>
-        <a href="https://wa.me/6580423758" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <a href="https://wa.me/6580423758?text=Hi%20Queen%20College%2C%20I%27d%20like%20to%20book%20an%20appointment" target="_blank" rel="noopener" aria-label="WhatsApp">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
           </svg>
@@ -816,25 +1055,112 @@
       header.closest('.quarter-group').classList.toggle('collapsed');
     }
 
-    // Lightbox
+    // Lightbox with prev/next navigation
+    let lbImages = [];   // [{src, title}, ...]
+    let lbIndex  = 0;
+
+    function buildLbImages() {
+      lbImages = [];
+      // Carousel posters
+      document.querySelectorAll('.carousel-poster img').forEach(img => {
+        const card  = img.closest('.carousel-card');
+        const title = card ? (card.querySelector('.carousel-title') || {}).textContent || '' : img.alt;
+        lbImages.push({ src: img.src, title });
+      });
+      // Offer row thumbs
+      document.querySelectorAll('.offer-thumb-wrap img').forEach(img => {
+        const row   = img.closest('.offer-row');
+        const title = row ? row.dataset.title || img.alt : img.alt;
+        lbImages.push({ src: img.src, title });
+      });
+    }
+
+    function lbShow(index) {
+      lbIndex = Math.max(0, Math.min(index, lbImages.length - 1));
+      const item = lbImages[lbIndex];
+      document.getElementById('lightboxImg').src   = item.src;
+      document.getElementById('lightboxImg').alt   = item.title;
+      document.getElementById('lightboxTitle').textContent = item.title;
+      document.getElementById('lbPrev').classList.toggle('hidden', lbIndex === 0);
+      document.getElementById('lbNext').classList.toggle('hidden', lbIndex === lbImages.length - 1);
+    }
+
+    function lbNav(dir) { lbShow(lbIndex + dir); }
+
+    function openCarouselLightbox(src, title) {
+      buildLbImages();
+      const idx = lbImages.findIndex(i => i.src.includes(src.split('/').pop()));
+      lbShow(idx >= 0 ? idx : 0);
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
     function openLightbox(thumbWrap) {
-  const img = thumbWrap.querySelector('img');
-  const row = thumbWrap.closest('.offer-row');
+      buildLbImages();
+      const img   = thumbWrap.querySelector('img');
+      const fname = img.src.split('/').pop();
+      const idx   = lbImages.findIndex(i => i.src.includes(fname));
+      lbShow(idx >= 0 ? idx : 0);
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
 
-  document.getElementById('lightboxImg').src = img.src;
-  document.getElementById('lightboxImg').alt = img.alt;
+    // ── Carousel auto-rotate ──
+    const featTrack  = document.getElementById('featuredTrack');
+    const featCards  = featTrack.querySelectorAll('.carousel-card');
+    const dotsWrap   = document.getElementById('carouselDots');
+    let autoIdx  = 0;
+    let autoTimer;
 
-  // 👇 新增這行
-  document.getElementById('lightboxTitle').textContent = row.dataset.title;
+    function goToCard(i) {
+      autoIdx = (i + featCards.length) % featCards.length;
+      const cardW = featCards[0].offsetWidth + 24;
+      featTrack.scrollTo({ left: autoIdx * cardW, behavior: 'smooth' });
+      dotsWrap.querySelectorAll('.carousel-dot').forEach((d, j) => {
+        d.classList.toggle('active', j === autoIdx);
+      });
+    }
 
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
+    function startAuto() {
+      stopAuto();
+      autoTimer = setInterval(() => goToCard(autoIdx + 1), 4000);
+    }
+
+    function stopAuto() { clearInterval(autoTimer); }
+
+    function scrollFeatured(direction) {
+      goToCard(autoIdx + direction);
+      stopAuto();
+      startAuto();
+    }
+
+    // Build dots
+    featCards.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      d.onclick = () => { goToCard(i); stopAuto(); startAuto(); };
+      dotsWrap.appendChild(d);
+    });
+
+    // Pause on hover / touch
+    featTrack.addEventListener('mouseenter', stopAuto);
+    featTrack.addEventListener('mouseleave', startAuto);
+    featTrack.addEventListener('touchstart', stopAuto, { passive: true });
+    featTrack.addEventListener('touchend',   () => setTimeout(startAuto, 2000));
+
+    startAuto();
+
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('open');
       document.body.style.overflow = '';
     }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape')     closeLightbox();
+      if (e.key === 'ArrowLeft')  lbNav(-1);
+      if (e.key === 'ArrowRight') lbNav(1);
+    });
 
     // Search & filter
     const searchInput  = document.getElementById('searchInput');
