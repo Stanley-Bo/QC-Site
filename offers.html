@@ -288,7 +288,7 @@
 
     /* ── OFFER ROW ── */
     .offer-row {
-      display: flex; gap: 28px; align-items: flex-start;
+      display: flex; gap: 36px; align-items: center;
       padding-bottom: 24px;
       border-bottom: 1px solid var(--border-soft);
     }
@@ -297,7 +297,7 @@
 
     .offer-thumb-wrap {
       flex-shrink: 0;
-      width: 160px;
+      width: 300px;
       aspect-ratio: 3 / 4;
       border-radius: var(--radius);
       overflow: hidden;
@@ -310,7 +310,9 @@
       object-fit: cover;
       transition: transform 0.4s ease;
     }
-    .offer-thumb-wrap:hover img { transform: scale(1.04); }
+    .offer-thumb-wrap:hover {
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
 
     .zoom-hint {
       position: absolute; bottom: 10px; right: 10px;
@@ -350,23 +352,23 @@
     .lightbox {
       display: none;
       position: fixed; inset: 0; z-index: 200;
-      background: rgba(44,36,32,0.9);
+      background: rgba(44,36,32,0.85);
       backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
       align-items: center; justify-content: center;
       padding: 24px; cursor: zoom-out;
     }
     .lightbox.open { display: flex; }
     .lightbox-img {
-      max-width: min(480px, 88vw);
+      max-width: min(720px, 92vw);
       max-height: 88vh;
       object-fit: contain;
       border-radius: var(--radius);
-      box-shadow: 0 32px 80px rgba(0,0,0,0.45);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.45);
       cursor: default;
       animation: lbIn 0.25s ease;
     }
     @keyframes lbIn {
-      from { opacity: 0; transform: scale(0.94); }
+      from { opacity: 0; transform: scale(0.96); }
       to   { opacity: 1; transform: scale(1); }
     }
     .lightbox-close {
@@ -376,7 +378,39 @@
       line-height: 1; transition: color 0.2s;
     }
     .lightbox-close:hover { color: var(--white); }
+.lightbox-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
 
+.lightbox-caption {
+  text-align: center;
+}
+
+.lightbox-title {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.lightbox-cta {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: var(--white);
+  border-radius: var(--radius);
+  transition: all 0.3s ease;
+}
+
+.lightbox-cta:hover {
+  background: rgba(255,255,255,0.1);
+}
     /* ── EMPTY STATE ── */
     .empty-state { display: none; text-align: center; padding: 80px 0; }
     .empty-state.visible { display: block; }
@@ -460,7 +494,7 @@
         <li><a href="index.html#contact">Visit Us</a></li>
         <li><a href="offers.html" class="active">Offers</a></li>
       </ul>
-      <a href="https://wa.me/6580423758?text=Hi%20Queen%20College%2C%20I'd%20like%20to%20book%20an%20appointment"
+      <a href="https://wa.me/6580423758"
          class="nav-cta" target="_blank" rel="noopener">Book Now</a>
       <div class="lang-switch">
         <a href="offers.html" class="lang active">EN</a>
@@ -689,10 +723,24 @@
 
 
   <!-- ══ LIGHTBOX ══ -->
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
-    <img class="lightbox-img" id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" />
+ <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+
+  <div class="lightbox-content" onclick="event.stopPropagation()">
+    <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+
+    <div class="lightbox-caption">
+      <div class="lightbox-title" id="lightboxTitle"></div>
+
+      <a id="lightboxCTA"
+         href="https://wa.me/6580423758"
+         target="_blank"
+         class="lightbox-cta">
+        Book via WhatsApp
+      </a>
+    </div>
   </div>
+</div>
 
 
   <!-- ══ FOOTER ══ -->
@@ -770,12 +818,18 @@
 
     // Lightbox
     function openLightbox(thumbWrap) {
-      const img = thumbWrap.querySelector('img');
-      document.getElementById('lightboxImg').src = img.src;
-      document.getElementById('lightboxImg').alt = img.alt;
-      document.getElementById('lightbox').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
+  const img = thumbWrap.querySelector('img');
+  const row = thumbWrap.closest('.offer-row');
+
+  document.getElementById('lightboxImg').src = img.src;
+  document.getElementById('lightboxImg').alt = img.alt;
+
+  // 👇 新增這行
+  document.getElementById('lightboxTitle').textContent = row.dataset.title;
+
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('open');
       document.body.style.overflow = '';
