@@ -3,8 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Queen College | Facial Studio · Jurong East, Singapore</title>
-  <meta name="description" content="Queen College is a premium facial studio in Jurong East, Singapore, specialising in anti-ageing treatments, collagen skin training, and long-term skin renewal." />
+
+  <!-- ══ PRIMARY SEO ══ -->
+  <title>Queen College | Facial Studio · Anti-Ageing & Collagen Treatments · Jurong East, Singapore</title>
+  <meta name="description" content="Queen College is a premium facial studio in Jurong East, Singapore. Specialising in anti-ageing facials, collagen skin training, brightening and skin renewal treatments. Located at Westgate, #04-12. Book via WhatsApp: +65 8042 3758." />
+  <meta name="keywords" content="facial studio Singapore, facial Jurong East, anti-ageing facial Singapore, collagen facial Singapore, skin renewal Singapore, brightening facial Jurong East, Westgate facial, facial near Jurong East MRT, Queen College Singapore, best facial west Singapore, women facial Singapore, skin training Singapore" />
+  <meta name="author" content="Queen College" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://queencollegesg.com/" />
+
+  <!-- ══ OPEN GRAPH (Facebook / WhatsApp / LinkedIn preview) ══ -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://queencollegesg.com/" />
+  <meta property="og:title"       content="Queen College | Facial Studio · Jurong East, Singapore" />
+  <meta property="og:description" content="Premium anti-ageing facials and collagen skin training at Westgate, Jurong East. No hard sell. Real, lasting results. Book via WhatsApp." />
+  <meta property="og:image"       content="https://queencollegesg.com/20260329%20QC%20Web%20BG.jpeg" />
+  <meta property="og:locale"      content="en_SG" />
+  <meta property="og:site_name"   content="Queen College" />
+
+  <!-- ══ TWITTER CARD ══ -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Queen College | Facial Studio · Jurong East, Singapore" />
+  <meta name="twitter:description" content="Premium anti-ageing facials and collagen skin training at Westgate, Jurong East. No hard sell. Real, lasting results." />
+  <meta name="twitter:image"       content="https://queencollegesg.com/20260329%20QC%20Web%20BG.jpeg" />
+
+  <!-- ══ GEO / LOCAL SEO ══ -->
+  <meta name="geo.region"      content="SG" />
+  <meta name="geo.placename"   content="Jurong East, Singapore" />
+  <meta name="geo.position"    content="1.3329;103.7418" />
+  <meta name="ICBM"            content="1.3329, 103.7418" />
+
+  <!-- ══ STRUCTURED DATA — Local Business (Google / AI search) ══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BeautySalon",
+    "name": "Queen College",
+    "description": "Premium facial studio specialising in anti-ageing treatments, collagen skin training, brightening and skin renewal. No hard sell. Located at Westgate, Jurong East.",
+    "url": "https://queencollegesg.com",
+    "logo": "https://queencollegesg.com/QC%20logo%20background%20transp.png",
+    "image": "https://queencollegesg.com/20260329%20QC%20Web%20BG.jpeg",
+    "telephone": "+6580423758",
+    "priceRange": "$$",
+    "currenciesAccepted": "SGD",
+    "paymentAccepted": "Cash, PayNow, Visa, Mastercard",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "3 Gateway Drive, #04-12, Westgate",
+      "addressLocality": "Jurong East",
+      "postalCode": "608532",
+      "addressCountry": "SG"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 1.3329,
+      "longitude": 103.7418
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "10:00",
+      "closes": "21:00"
+    },
+    "sameAs": [
+      "https://instagram.com/queencollegesg",
+      "https://facebook.com/queencollegesg"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Facial Treatments",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Anti-Ageing Facial" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Collagen Skin Training" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brightening & Skin Renewal" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Maintenance & Calming Care" } }
+      ]
+    }
+  }
+  </script>
 
   <!-- Google Fonts: Cormorant Garamond (serif headline) + DM Sans (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -964,42 +1040,125 @@ background-position: center center;
     /* ──────────────────────────────────────────
        RESPONSIVE — TABLET
     ────────────────────────────────────────── */
+    /* ── RESPONSIVE — TABLET (≤900px) ── */
     @media (max-width: 900px) {
       :root { --section: 72px; }
 
-      .about-grid    { grid-template-columns: 1fr; gap: 48px; }
-      .about-image-wrap { max-width: 420px; }
-      .services-grid { grid-template-columns: 1fr; gap: 2px; }
-      .why-grid      { grid-template-columns: 1fr 1fr; gap: 36px; }
-      .contact-grid  { grid-template-columns: 1fr; gap: 48px; }
-      .reviews-grid { grid-template-columns: 1fr; }
+      .about-grid       { grid-template-columns: 1fr; gap: 48px; }
+      .about-image-wrap { max-width: 420px; margin-inline: auto; }
+      .services-grid    { grid-template-columns: 1fr; gap: 2px; }
+      .why-grid         { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .contact-grid     { grid-template-columns: 1fr; gap: 48px; }
+      .reviews-grid     { grid-template-columns: 1fr; gap: 20px; }
+
       .nav-links, .nav-cta, .lang-switch { display: none; }
       .hamburger { display: flex; }
     }
 
-    /* ──────────────────────────────────────────
-       RESPONSIVE — MOBILE
-    ────────────────────────────────────────── */
+    /* ── RESPONSIVE — MOBILE (≤600px) ── */
     @media (max-width: 600px) {
       :root { --section: 60px; }
 
-      .why-grid   { grid-template-columns: 1fr; gap: 28px; }
-      .stat-row   { gap: 24px; }
-
+      .why-grid     { grid-template-columns: 1fr; gap: 28px; }
+      .stat-row     { gap: 24px; flex-wrap: wrap; }
       .service-card { padding: 32px 24px; }
 
       .hero-actions { flex-direction: column; align-items: flex-start; }
       .hero-actions .btn { width: 100%; justify-content: center; }
 
-      .contact-cta { flex-direction: column; }
+      .contact-cta  { flex-direction: column; }
       .contact-cta .btn { justify-content: center; }
 
       .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+      .section-head { margin-bottom: 36px; }
     }
+    /* ── PROMO POPUP ── */
+    .promo-popup {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(44,36,32,0.82);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      cursor: zoom-out;
+    }
+    .promo-popup.open { display: flex; }
+
+    .promo-popup-inner {
+      position: relative;
+      max-width: min(420px, 88vw);
+      cursor: default;
+      animation: promoIn 0.35s cubic-bezier(0.34,1.2,0.64,1);
+    }
+    @keyframes promoIn {
+      from { opacity: 0; transform: scale(0.88) translateY(16px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .promo-popup-inner img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.45);
+      display: block;
+    }
+
+    .promo-popup-close {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--text-dark);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.8);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      transition: background 0.2s;
+    }
+    .promo-popup-close:hover { background: var(--gold); color: var(--white); }
+
+    .promo-popup-cta {
+      display: block;
+      margin-top: 14px;
+      text-align: center;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 11px 24px;
+      background: var(--gold);
+      color: var(--white);
+      border-radius: var(--radius);
+      transition: background 0.25s ease;
+    }
+    .promo-popup-cta:hover { background: var(--gold-light); }
+
   </style>
 </head>
 
 <body>
+
+  <!-- ══════════════════════════════════════════
+       PROMO POPUP — shows 3s after page load
+       ✏️ To update: change the img src to new poster filename
+  ══════════════════════════════════════════ -->
+  <div class="promo-popup" id="promoPopup" onclick="closePromo()">
+    <div class="promo-popup-inner" onclick="event.stopPropagation()">
+      <button class="promo-popup-close" onclick="closePromo()" aria-label="Close">✕</button>
+      <img src="offers/20260401-Promo-Masterposter.png" alt="Current Offer" />
+      <a href="offers.html" class="promo-popup-cta" onclick="closePromo()">View All Offers</a>
+    </div>
+  </div>
 
   <!-- ══════════════════════════════════════════
        NAVIGATION
@@ -1018,6 +1177,7 @@ background-position: center center;
         <li><a href="#why">Why Us</a></li>
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="#contact">Visit Us</a></li>
+        <li><a href="offers.html">Offers</a></li>
       </ul>
       <a href="https://wa.me/6580423758?text=Hi%20Queen%20College%2C%20I'd%20like%20to%20book%20an%20appointment"
          class="nav-cta" target="_blank" rel="noopener">Book Now</a>
@@ -1042,6 +1202,7 @@ background-position: center center;
     <a href="#why"      onclick="closeMobile()">Why Us</a>
     <a href="#reviews"  onclick="closeMobile()">Reviews</a>
     <a href="#contact"  onclick="closeMobile()">Visit Us</a>
+    <a href="offers.html" onclick="closeMobile()" style="color:var(--gold)">Offers</a>
     <a href="index.html" onclick="closeMobile()">EN</a>
     <a href="cn.html" onclick="closeMobile()">中文</a>
     <!-- ✏️ REPLACE: WhatsApp number -->
@@ -1441,6 +1602,7 @@ Services”
         <a href="#why">Why Us</a>
         <a href="#reviews">Reviews</a>
         <a href="#contact">Visit Us</a>
+        <a href="offers.html">Offers</a>
       </nav>
 
       <div class="footer-social">
@@ -1512,6 +1674,21 @@ Services”
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
     fadeEls.forEach(el => observer.observe(el));
+
+    // ── Promo popup — opens after 3 seconds ──
+    function closePromo() {
+      document.getElementById('promoPopup').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    setTimeout(() => {
+      document.getElementById('promoPopup').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }, 3000);
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closePromo();
+    });
   </script>
 
 </body>
