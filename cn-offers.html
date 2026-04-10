@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Koiskin Lab | Coming Soon</title>
+  <style>
+    /* 這裡就是你說的 Section CSS，我們直接針對 body 處理 */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden; /* 防止出現捲軸 */
+      background-color: #f2f1ee; /* 背景底色，建議用你的 stone color */
+    }
+
+    .coming-soon-container {
+      width: 100%;
+      height: 100vh; /* 佔滿 100% 視窗高度 */
+      display: flex;
+      justify-content: center; /* 水平置中 */
+      align-items: center;     /* 垂直置中 */
+    }
+
+    .coming-soon-img {
+      width: 100%;
+      height: 100%;
+      /* 這行最關鍵：確保圖片比例正確且填滿全螢幕 */
+      object-fit: cover; 
+      /* 如果你希望圖片不要被裁切，而是完整顯示，可以換成 object-fit: contain; */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="coming-soon-container">
+    <img src="20260329 Website coming soon.jpeg" alt="Queen College Coming Soon" class="coming-soon-img">
+  </div>
+
+</body>
+</html>
