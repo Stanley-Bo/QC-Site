@@ -135,15 +135,12 @@
     a   { color: inherit; text-decoration: none; } /* 响应式换行辅助类：专治中文断句不适 */
     .br-desktop { display: block; }
     .br-mobile { display: none; }
-    
-    @media (max-width: 768px) {
-      .br-desktop { display: inline; content: ' '; }
-      .br-mobile { display: block; }
+
     }
 /* ───TYPOGRAPHY HELPERS────── */
     .eyebrow {
       font-family: var(--sans);
-      font-size: 12px;
+      font-size: 10px;
       font-weight: 500;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -154,15 +151,15 @@
       font-family: var(--serif);
       font-weight: 400;
       color: var(--text-dark);
-      line-height: 1.4;
+      line-height: 1.2;
       letter-spacing: 0.03em;
     }
 
     h1 { font-size: clamp(2.4rem, 7vw, 4.5rem); }
-    h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 24px; }
-    h3 { font-size: clamp(1.2rem, 3vw, 1.4rem); margin-bottom: 12px; font-weight: 500; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.6rem);}
+    h3 { font-size: clamp(1.2rem, 3vw, 1.4rem); font-weight: 500; }
 
-    p  { font-size: clamp(0.95rem, 2vw, 1.05rem); margin-bottom: 20px; }
+    p  { font-size: clamp(0.95rem, 2vw, 1.05rem); }
 
 /* ────────LAYOUT UTILITIES─────────────── */
     .container {
@@ -289,7 +286,7 @@
     .mobile-menu a:hover { color: var(--gold); }
     .mobile-close { position: absolute; top: 22px; right: 28px; font-size: 1.5rem; color: var(--text-dark); cursor: pointer; background: none; border: none; line-height: 1; }
 
-/* ───────────────HERO 首屏排版优化─────────────── */
+/* ───────────────HERO─────────────── */
     #hero {
       min-height: 100svh;
       display: flex;
@@ -424,18 +421,38 @@
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px; /* 增加图文间距 */
+      gap: 72px; /* 增加图文间距 */
       align-items: center;
     }
 
     .about-image-wrap { position: relative; }
-    .about-image {
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
+    .about-image-placeholder {
+      aspect-ratio: 3/4;
+      background: linear-gradient(145deg, #e8e0d4, #d4c9bb);
       border-radius: 2px;
-      display: block;
+      position: relative;
+      overflow: hidden;
     }
+     .about-image-placeholder::after {
+      content: 'Your salon photo here';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: #a09282;
+      text-transform: uppercase;
+    }
+    .about-image {
+     width: 100%;
+     aspect-ratio: 3 / 4;
+     object-fit: cover;
+     border-radius: 2px;
+     display: block;
+    }
+
     .about-image-accent {
       position: absolute;
       bottom: -20px;
@@ -446,21 +463,24 @@
       border-radius: 2px;
       z-index: -1;
     }
+    .about-copy { padding-block: 16px; }
 
-    .about-copy { padding-block: 16px; max-width: 480px; /* 限制中文段落宽度 */ }
-    
+    .about-copy h2 { margin-bottom: 20px; }
+
+    .about-copy p { margin-bottom: 18px; color: var(--text-mid); }
+
+    .about-copy p:last-of-type { margin-bottom: 32px; }
+ /* stat row */
     .stat-row {
       display: flex;
       gap: 40px;
-      padding-top: 36px;
-      margin-top: 40px;
+      padding-top: 32px;
       border-top: 1px solid var(--border-soft);
     }
-    .stat-num { font-family: var(--serif); font-size: 2.2rem; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+    .stat-item {}
+    .stat-num { font-family: var(--serif); font-size: 2.4rem; color: var(--gold); line-height: 1; margin-bottom: 4px; }
     .stat-label { font-size: 12px; letter-spacing: 0.05em; color: var(--text-soft); }
-/* ──────────────────────────────────────────
-   REVIEWS
-────────────────────────────────────────── */
+/* ─────────────REVIEWS───────────────── */
 #reviews {
   background: var(--white);
 }
@@ -525,24 +545,46 @@
 
     .service-card {
       background: var(--bg-card);
-      padding: 56px 48px; /* 增加卡片内部呼吸感 */
+      padding: 44px 40px; 
       position: relative;
       overflow: hidden;
       transition: background 0.3s ease;
     }
-    .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 0; background: var(--gold); transition: height 0.4s ease; }
+ .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 0;
+      background: var(--gold);
+      transition: height 0.4s ease;
+    }
+
     .service-card:hover { background: var(--white); }
     .service-card:hover::before { height: 100%; }
 
-    .service-num { font-family: var(--serif); font-size: 3.5rem; color: var(--gold-faint); line-height: 1; margin-bottom: 24px; transition: color 0.3s; }
+    .service-num {
+      font-family: var(--serif);
+      font-size: 3rem;
+      color: var(--gold-faint);
+      line-height: 1;
+      margin-bottom: 20px;
+      transition: color 0.3s;
+    }
+
     .service-card:hover .service-num { color: rgba(184,167,92,0.18); }
+
     .service-card h3 {
       margin-bottom: 12px;
-    
-    .service-card p {
-      margin-bottom: 0; /* 卡片内最后一段不要 margin */
-      max-width: 400px;
     }
+
+    .service-card p {
+      color: var(--text-soft);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+
 /* ───────────WHY QUEEN COLLEGE──────────────── */
     #why {
       background: var(--white);
@@ -979,44 +1021,44 @@
       <div class="section-head fade-up">
         <span class="eyebrow">为什么选择我们</span>
         <div class="divider"></div>
-        <h2>不强迫推销，<br class="br-mobile">不追求短暂效果。</h2>
+        <h2>不强迫推销，不追求短暂效果。</h2>
       </div>
 
       <div class="why-grid">
         <div class="why-item fade-up">
           <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="#B8A75C"><circle cx="18" cy="18" r="17" stroke-width="1"/><path d="M11 18.5l5 5 9-10" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <h3>看得见的“长期复利”</h3>
-          <p>拒绝做完就打回原形的项目。我们为您规划护肤路径，让每一次到店都成为您变美路上的真实进阶。</p>
+          <h3>看得见的长期改善</h3>
+          <p>拒绝短暂效果的护理项目。我们根据您的肌肤状态进行调整，让每一次到店都成为稳定改善的一部分。</p>
         </div>
 
         <div class="why-item fade-up">
           <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="#B8A75C"><circle cx="18" cy="18" r="17" stroke-width="1"/><path d="M18 10v8l5 3" stroke-width="1.2" stroke-linecap="round"/></svg>
-          <h3>懂你生活节奏的效率</h3>
-          <p>专为忙碌职场女性设计。没有繁冗无效的流程，每一分钟都在发挥作用，让您焕然一新地离开。</p>
+          <h3>贴合生活节奏的护理方式</h3>
+          <p>为忙碌的日常而设计。流程简单而有效，让每一次护理都更轻松、自然。</p>
         </div>
 
         <div class="why-item fade-up">
           <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="#B8A75C"><circle cx="18" cy="18" r="17" stroke-width="1"/><path d="M14 20c0-2 1.5-3.5 4-3.5s4 1.5 4 3.5" stroke-width="1.2" stroke-linecap="round"/><circle cx="18" cy="13" r="2" stroke-width="1"/></svg>
-          <h3>绝不推销，只给建议</h3>
-          <p>坚持真诚沟通。我们只提供客观专业的护肤建议，您绝不会在这里感受到任何办卡逼单的压力。</p>
+          <h3>不强迫推销，只提供建议</h3>
+          <p>坚持真诚沟通。我们提供客观的护理建议，让您在这里感到安心与放松。</p>
         </div>
 
         <div class="why-item fade-up">
           <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="#B8A75C"><circle cx="18" cy="18" r="17" stroke-width="1"/><path d="M13 16.5s1-4.5 5-4.5 5 4.5 5 4.5v7h-10v-7z" stroke-width="1" stroke-linejoin="round"/></svg>
-          <h3>治愈系的沉浸空间</h3>
-          <p>精心布置的私密护理室。舒适、洁净、静谧，伴随着轻柔的安神香氛，在这里卸下疲惫，睡个好觉。</p>
+          <h3>安静放松的护理空间</h3>
+          <p>舒适、洁净、安静的护理环境，让您在过程中慢慢放松下来。</p>
         </div>
 
         <div class="why-item fade-up">
           <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="#B8A75C"><circle cx="18" cy="18" r="17" stroke-width="1"/><path d="M18 11l1.8 3.6 4 .6-2.9 2.8.7 4L18 20l-3.6 2 .7-4L12.2 15l4-.6z" stroke-width="1" stroke-linejoin="round"/></svg>
-          <h3>死磕抗衰的技术派</h3>
-          <p>比起花哨的噱头，我们更注重底层逻辑。主攻真皮层胶原焕活，让皮肤由内而外透出紧致与强韧。</p>
+          <h3>专注抗衰的护理方式</h3>
+          <p>比起表面的变化，我们更注重肌肤状态的稳定与改善，让肌肤逐渐呈现紧致与健康感。</p>
         </div>
 
         <div class="why-item fade-up">
           <svg class="why-icon" viewBox="0 0 36 36" fill="none" stroke="#B8A75C"><circle cx="18" cy="18" r="17" stroke-width="1"/><path d="M12 22c0-4 2.5-7 6-7s6 3 6 7" stroke-width="1.2" stroke-linecap="round"/><line x1="18" y1="12" x2="18" y2="13.5" stroke-width="1.2" stroke-linecap="round"/><line x1="13.5" y1="13.5" x2="14.5" y2="14.5" stroke-width="1.2" stroke-linecap="round"/><line x1="22.5" y1="13.5" x2="21.5" y2="14.5" stroke-width="1.2" stroke-linecap="round"/></svg>
-          <h3>西部白领的私藏宝藏</h3>
-          <p>坐落于交通便利的 Jurong East，让居住或工作在西部的姐妹们，下班后能轻松赴一场美丽之约。</p>
+          <h3>西部顾客的安心选择</h3>
+          <p>位于交通便利的 Jurong East，方便在西部生活或工作的顾客轻松到访。</p>
         </div>
       </div>
     </div>
@@ -1028,7 +1070,7 @@
         <span class="eyebrow">顾客评价</span>
         <div class="divider"></div>
         <h2>她们的变美体验</h2>
-        <来自顾客的真实反馈，<br>见证肌肤一点一点的改变。
+        来自顾客的真实反馈，<br>见证肌肤一点一点的改变。
       </div>
 
       <div class="reviews-grid">
