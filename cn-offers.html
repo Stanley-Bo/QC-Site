@@ -83,106 +83,37 @@
     }
 
     /* ── NAV ── */
-    #mainNav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 20px 0;
-      background: rgba(44,36,32,0.35);
-      transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
-    }
-    #mainNav.scrolled {
-      background: rgba(247,243,241,0.96);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 14px 0;
-      box-shadow: 0 1px 0 var(--border-soft);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-    .nav-logo {
-      font-family: var(--serif);
-      font-size: 1.35rem;
-      font-weight: 500;
-      color: var(--white);
-      letter-spacing: 0.05em;
-      transition: color 0.4s ease;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-    .nav-logo-img {
-      width: 36px; height: 36px;
-      object-fit: contain;
-      mix-blend-mode: screen;
-      transition: opacity 0.4s ease;
-    }
+     #mainNav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(44,36,32,0.35); transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease; }
+    #mainNav.scrolled { background: rgba(247,243,241,0.96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 14px 0; box-shadow: 0 1px 0 var(--border-soft); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .nav-logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; color: var(--white); letter-spacing: 0.05em; transition: color 0.4s ease; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-logo-img { width: 36px; height: 36px; object-fit: contain; mix-blend-mode: screen; transition: opacity 0.4s ease; }
     #mainNav.scrolled .nav-logo-img { mix-blend-mode: multiply; }
-    #mainNav.scrolled .nav-logo     { color: var(--text-dark); }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a {
-      font-size: 12px; font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(255,255,255,0.8); transition: color 0.3s;
-    }
+    #mainNav.scrolled .nav-logo { color: var(--text-dark); }
+    .nav-links { display: flex; gap: 32px; list-style: none; justify-self: center; }
+    .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: rgba(255,255,255,0.85); transition: color 0.3s; }
     #mainNav.scrolled .nav-links a { color: var(--text-mid); }
-    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-    .nav-cta {
-      font-size: 12px; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--white);
-      border: 1px solid rgba(255,255,255,0.4);
-      padding: 9px 20px;
-      border-radius: var(--radius);
-      transition: all 0.3s ease;
-    }
-    #mainNav.scrolled .nav-cta      { color: var(--gold); border-color: var(--border); }
-    .nav-cta:hover                   { background: rgba(255,255,255,0.1); }
-    #mainNav.scrolled .nav-cta:hover { background: var(--gold-faint); }
-    .lang-switch {
-      margin-left: 16px; font-size: 11px; letter-spacing: 0.12em;
-      display: flex; align-items: center; gap: 6px;
-      color: rgba(255,255,255,0.7); opacity: 0.6;
-    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: var(--white); border: 1px solid rgba(255,255,255,0.4); padding: 9px 20px; border-radius: var(--radius); transition: all 0.3s ease; justify-self: end; }
+    .lang-switch { margin-left: 16px; font-size: 12px; letter-spacing: 0.1em; display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.7); }
     #mainNav.scrolled .lang-switch { color: var(--text-mid); }
-    .lang-switch a    { text-decoration: none; opacity: 0.7; }
-    .lang-switch:hover { opacity: 1; }
-    .lang-switch .active { opacity: 1; font-weight: 500; }
-    .hamburger {
-      display: none; flex-direction: column;
-      gap: 5px; cursor: pointer; padding: 4px;
-    }
-    .hamburger span {
-      display: block; width: 22px; height: 1.5px;
-      background: var(--white); transition: all 0.3s ease;
-    }
+    .lang-switch a { opacity: 0.6; transition: opacity 0.2s; }
+    .lang-switch a:hover { opacity: 1; }
+    .lang-switch .active { opacity: 1; font-weight: 500; color: var(--gold); }
+    #mainNav.scrolled .lang-switch .active { color: var(--gold); }
+    #mainNav.scrolled .nav-cta { color: var(--gold); border-color: var(--border); }
+    .nav-cta:hover { background: rgba(255,255,255,0.1); }
+    #mainNav.scrolled .nav-cta:hover { background: var(--gold-faint); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: all 0.3s ease; }
     #mainNav.scrolled .hamburger span { background: var(--text-dark); }
-    .mobile-menu {
-      display: none; flex-direction: column;
-      background: rgba(247,243,241,0.98);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      position: fixed; inset: 0; z-index: 99;
-      align-items: center; justify-content: center;
-      gap: 36px; opacity: 0; pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
+    .mobile-menu { display: none; flex-direction: column; background: rgba(247,243,241,0.98); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position: fixed; inset: 0; z-index: 99; align-items: center; justify-content: center; gap: 36px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
     .mobile-menu.open { display: flex; opacity: 1; pointer-events: all; }
-    .mobile-menu a {
-      font-family: var(--serif); font-size: 2rem;
-      color: var(--text-dark); transition: color 0.2s;
-    }
+    .mobile-menu a { font-family: var(--serif); font-size: 1.8rem; color: var(--text-dark); transition: color 0.2s; }
     .mobile-menu a:hover { color: var(--gold); }
-    .mobile-close {
-      position: absolute; top: 22px; right: 28px;
-      font-size: 1.5rem; color: var(--text-dark);
-      cursor: pointer; background: none; border: none; line-height: 1;
-    }
+    .mobile-close { position: absolute; top: 22px; right: 28px; font-size: 1.5rem; color: var(--text-dark); cursor: pointer; background: none; border: none; line-height: 1; }
 
+ 
     /* ── PAGE HEADER ── */
     .page-header {
       padding-top: 140px;
@@ -703,11 +634,11 @@
         Queen College
       </a>
       <ul class="nav-links">
-        <li><a href="index.html#about">关于</a></li>
-        <li><a href="index.html#services">护理项目</a></li>
-        <li><a href="index.html#why">为什么选择我们</a></li>
-        <li><a href="index.html#reviews">顾客评价</a></li>
-        <li><a href="index.html#contact">到访我们</a></li>
+        <li><a href="cn.html#about">关于</a></li>
+        <li><a href="cn.html#services">护理项目</a></li>
+        <li><a href="cn.html#why">为什么选择我们</a></li>
+        <li><a href="cn.html#reviews">顾客评价</a></li>
+        <li><a href="cn.html#contact">到访我们</a></li>
         <li><a href="offers.html" class="active">优惠</a></li>
       </ul>
       <a href="https://wa.me/6580423758?text=你好，我想预约护理，可以帮我看看时间吗？"
@@ -725,11 +656,11 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-close" id="mobileClose" aria-label="Close menu">✕</button>
-    <a href="index.html#about"    onclick="closeMobile()">About</a>
-    <a href="index.html#services" onclick="closeMobile()">Treatments</a>
-    <a href="index.html#why"      onclick="closeMobile()">Why Us</a>
-    <a href="index.html#reviews"  onclick="closeMobile()">Reviews</a>
-    <a href="index.html#contact"  onclick="closeMobile()">Visit Us</a>
+    <a href="cn.html#about"    onclick="closeMobile()">About</a>
+    <a href="cn.html#services" onclick="closeMobile()">Treatments</a>
+    <a href="cn.html#why"      onclick="closeMobile()">Why Us</a>
+    <a href="cn.html#reviews"  onclick="closeMobile()">Reviews</a>
+    <a href="cn.html#contact"  onclick="closeMobile()">Visit Us</a>
     <a href="offers.html"         onclick="closeMobile()" style="color:var(--gold)">Offers</a>
     <a href="offers.html">EN</a>
     <a href="cn-offers.html">中文</a>
@@ -1044,11 +975,11 @@
       <div class="footer-logo">Queen College</div>
       <div class="footer-tagline">养出肌肤状态 · 回归自然光采</div>
       <nav class="footer-links" aria-label="Footer navigation">
-        <a href="index.html#about">关于</a>
-        <a href="index.html#services">护理项目</a>
-        <a href="index.html#why">为什么选择我们</a>
-        <a href="index.html#reviews">顾客评价</a>
-        <a href="index.html#contact">到访我们</a>
+        <a href="cn.html#about">关于</a>
+        <a href="cn.html#services">护理项目</a>
+        <a href="cn.html#why">为什么选择我们</a>
+        <a href="cn.html#reviews">顾客评价</a>
+        <a href="cn.html#contact">到访我们</a>
         <a href="offers.html" class="active">优惠</a>
       </nav>
       
