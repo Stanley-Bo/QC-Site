@@ -106,19 +106,19 @@
 
 /* ══ HERO BANNER    */
     #hero {
-      margin-top: 64px;
-      position: relative;
-      width: 100%;
-      aspect-ratio: 1920 / 680;
-      min-height: 280px; max-height: 680px;
+      min-height: 70svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding-left: clamp(24px, 6vw, 80px);  
+      position: center;
       overflow: hidden;
       background: linear-gradient(135deg, #3a2e28 0%, #5a4a3e 50%, #7a6456 100%);
-      display: flex; align-items: center;
       background: url('offers/LanndingP/underarm-hero-banner.jpeg') center/cover no-repeat;    }
-    #hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(44,36,32,0.72) 0%, rgba(44,36,32,0.30) 65%, transparent 100%); z-index: 1; }
-    .hero-content { position: relative; z-index: 2; padding-block: clamp(32px, 5vw, 56px); }
-    .hero-tagline { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
-    .hero-tagline::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold-light); }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-tagline { font-family: var(--sans); font-size: 5px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+    .hero-tagline::before { content: ''; display: block; width: 20px; height: 1px; background: var(--gold-light); }
     .hero-title { text-wrap: balance;
       font-size: clamp(2.2rem, 4.5vw, 3.2rem);
       line-height: 1.25;
@@ -127,8 +127,8 @@
     .hero-subtitle {
       font-size: clamp(0.85rem, 1.8vw, 1rem);
       line-height: 1;
-      opacity: 0.85; margin-top: 18px;    
-      margin-bottom: 20px;} 
+      color: var(--gold);  opacity: 1; margin-top: 18px;    
+      margin-bottom: 5px;} 
     .hero-amp {
       display: block;
       font-size: 0.6em;     
@@ -377,7 +377,7 @@
       <h1>Underarm Hair Removal
       <span class="hero-amp">&</span>
       Brightening
-      <h2 style="font-family: var(--serif); font-weight:300; font-style:italic;">  Underarm Skin Reset · Jurong East</h2>
+      <h2 style="font-family: var(--serif); font-weight:300; font-style:italic;">  <br>Underarm Skin Reset · Jurong East</h2>
       <p class="hero-subtitle">Smooth, brighten &amp; restore confidence in just one visit</p>
     </div>
   </section>
