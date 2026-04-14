@@ -104,7 +104,7 @@
     .mobile-menu a:hover { color: var(--gold); }
     .mobile-close { position: absolute; top: 22px; right: 28px; font-size: 1.5rem; color: var(--text-dark); cursor: pointer; background: none; border: none; line-height: 1; }
 
-    /* ══ HERO BANNER
+/* ══ HERO BANNER
        ✏️ IMAGE SIZE: 1920 × 680px  (JPG, save <400KB)
        ✏️ File name: underarm-hero-banner.jpg  (same folder as HTML)
        ✏️ When ready, replace the background in #hero below with:
@@ -127,15 +127,15 @@
     .hero-title { color: var(--white); margin-bottom: 8px; text-shadow: 0 2px 24px rgba(0,0,0,0.3); }
     .hero-subtitle { font-family: var(--serif); font-size: clamp(1rem, 2.5vw, 1.45rem); font-weight: 300; font-style: italic; color: rgba(255,255,255,0.72); margin-bottom: 20px; }
 
-    /* ══ INTRO */
+/* ══ INTRO */
     #intro { background: var(--white); }
-    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
-    .intro-copy p { color: var(--text-mid); margin-bottom: 16px; }
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .intro-copy p { color: var(--text-mid); margin-bottom: 14px; }
     .intro-copy p:last-child { margin-bottom: 0; }
     .intro-quote { border-left: 2px solid var(--gold); padding-left: 24px; margin-block: 24px; }
     .intro-quote p { font-family: var(--serif); font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-style: italic; color: var(--text-dark); line-height: 1.5; }
 
-    /* ══ WHY THIS TREATMENT — ICON GRID
+/* ══ WHY THIS TREATMENT — ICON GRID
        ✏️ ICON SIZE: 64 × 64px PNG (transparent background, dark/black icon)
        ✏️ Replace each inline SVG with: <img src="icons/your-icon.png" alt="" style="width:36px;height:36px;" />
     */
@@ -150,9 +150,9 @@
     .why-icon-text h3 { font-size: 0.88rem; font-weight: 500; font-family: var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-dark); margin-bottom: 3px; line-height: 1.3; }
     .why-icon-text p  { font-size: 0.80rem; color: var(--text-soft); line-height: 1.5; }
 
-    /* ══ PRICING */
+/* ══ PRICING */
     #pricing { background: var(--white); }
-    .pricing-head { max-width: 520px; margin-bottom: 48px; }
+    .pricing-head {  margin-bottom: 48px; }
     .pricing-head p { color: var(--text-soft); margin-top: 12px; }
     .pricing-scarcity { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
     .pricing-scarcity::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
@@ -168,7 +168,7 @@
     .pricing-desc { font-size: 0.88rem; color: var(--text-soft); line-height: 1.65; margin-top: 16px; }
     .pricing-note { text-align: center; font-size: 0.88rem; color: var(--text-soft); margin-bottom: 36px; }
 
-    /* ══ TREATMENT FLOW
+/* ══ TREATMENT FLOW
        ✏️ STEP IMAGE SIZE: 480 × 360px  (JPG, 4:3 ratio, <200KB each)
        ✏️ File name suggestions: step-1-prep.jpg, step-2-removal.jpg,
           step-3-gel.jpg, step-4-ipl.jpg, step-5-aftercare.jpg
@@ -176,7 +176,7 @@
           <img src="step-1-prep.jpg" alt="Step 1 Preparation" />
     */
     #flow { background: var(--bg); }
-    .flow-head { max-width: 560px; margin-bottom: 56px; }
+    .flow-head { margin-bottom: 56px; }
     .flow-head p { color: var(--text-soft); margin-top: 12px; }
     .flow-steps { display: flex; flex-direction: column; position: relative; }
     .flow-steps::before { content: ''; position: absolute; left: 20px; top: 24px; width: 1px; bottom: 24px; background: var(--border); }
@@ -191,9 +191,7 @@
     .flow-step-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .flow-step-img-ph { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: #a09282; }
 
-    /* ══ PRODUCTS */
-    #products { background: var(--white); }
-    .products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+/* ══ PRODUCTS     #products { background: var(--white); }    .products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
     .products-copy h2 { margin-bottom: 16px; }
     .products-copy p { color: var(--text-mid); font-size: 0.95rem; margin-bottom: 14px; }
     .product-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
@@ -205,7 +203,7 @@
     .product-item-name { font-family: var(--serif); font-size: 1rem; color: var(--text-dark); margin-bottom: 1px; }
     .product-item-desc { font-size: 0.82rem; color: var(--text-soft); }
 
-    /* ══ TECHNOLOGY */
+/* ══ TECHNOLOGY */
     #technology { background: var(--bg); }
     .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
     .tech-copy h2 { margin-bottom: 16px; }
@@ -217,7 +215,7 @@
     .tech-point-label { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
     .tech-point-text { font-size: 0.88rem; color: var(--text-soft); line-height: 1.6; }
 
-    /* ══ FAQ */
+/* ══ FAQ */
     #faq { background: var(--white); }
     .faq-head { max-width: 560px; margin-bottom: 48px; }
     .faq-head p { color: var(--text-soft); margin-top: 12px; }
@@ -232,7 +230,7 @@
     .faq-item.open .faq-answer { display: block; }
     .faq-answer p { font-size: 0.95rem; color: var(--text-soft); line-height: 1.75; }
 
-    /* ══ BOOK NOW BANNER */
+/* ══ BOOK NOW BANNER */
     #book-banner { background: var(--text-dark); padding-block: 64px; }
     .book-banner-inner { text-align: center; }
     .book-banner-inner h2 { color: var(--white); font-size: clamp(1.8rem, 4vw, 3rem); margin-bottom: 12px; }
@@ -240,7 +238,7 @@
     .book-banner-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
     .book-banner-note { margin-top: 20px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
 
-    /* ══ REVIEWS */
+/* ══ REVIEWS */
     #reviews { background: var(--bg); }
     .reviews-head {  margin-bottom: 48px; }
     .reviews-head p {color: var(--text-soft); margin-top: 12px; text-wrap: balance;}
@@ -251,7 +249,7 @@
     .review-text { font-size: 0.92rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 16px; }
     .review-name { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-soft); }
 
-    /* ══ CONTACT */
+/* ══ CONTACT */
     #contact { background: var(--white); }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
     .contact-info h2 { margin-bottom: 16px; }
@@ -264,7 +262,7 @@
     .contact-cta { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; }
     .contact-map { background: linear-gradient(145deg, #e2dcd6, #cfc7be); aspect-ratio: 1 / 1.05; border-radius: 2px; overflow: hidden; }
 
-    /* ══ FOOTER */
+/* ══ FOOTER */
     footer { background: var(--text-dark); padding: 60px 0 36px; border-top: 1px solid rgba(255,255,255,0.06); }
     .footer-inner { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
     .footer-logo { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; color: var(--white); letter-spacing: 0.06em; margin-bottom: 4px; }
@@ -277,15 +275,15 @@
     .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
     .footer-bottom { width: 100%; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 24px; font-size: 11px; color: rgba(255,255,255,0.25); letter-spacing: 0.08em; }
 
-    /* ══ FLOATING WHATSAPP BUTTON */
+/* ══ FLOATING WHATSAPP BUTTON */
     .float-wa { position: fixed; bottom: 28px; right: 28px; z-index: 150; display: flex; align-items: center; gap: 10px; background: #25D366; color: var(--white); border-radius: 999px; padding: 12px 20px 12px 14px; box-shadow: 0 4px 20px rgba(37,211,102,0.35); font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: transform 0.25s ease, box-shadow 0.25s ease; }
     .float-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.45); }
 
-    /* FADE UP */
+/* FADE UP */
     .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* RESPONSIVE TABLET */
+/* RESPONSIVE TABLET */
     @media (max-width: 900px) {
       :root { --section: 72px; }
       .intro-grid, .tech-grid, .products-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -297,7 +295,7 @@
       .hamburger { display: flex; }
     }
 
-    /* RESPONSIVE MOBILE */
+/* RESPONSIVE MOBILE */
     @media (max-width: 600px) {
       :root { --section: 60px; }
       .hero-actions { flex-direction: column; align-items: flex-start; }
@@ -315,7 +313,7 @@
 
 <body>
 
-  <!-- ══ FLOATING WHATSAPP BUTTON ══ -->
+ <!-- FLOATING WHATSAPP BUTTON ══ -->
   <a href="https://wa.me/6580423758?text=Hi%20Queen%20College%2C%20I'd%20like%20to%20book%20the%20Underarm%20Skin%20Reset"
      class="float-wa" target="_blank" rel="noopener" aria-label="Book via WhatsApp">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
@@ -325,8 +323,7 @@
     <span>Book Now</span>
   </a>
 
-
-  <!-- ══ NAV ══ -->
+<!--NAV ══ -->
   <nav id="mainNav">
     <div class="container nav-inner">
       <a href="index.html" class="nav-logo">
@@ -366,7 +363,6 @@
        target="_blank" rel="noopener" style="color:var(--gold)">Book Now</a>
   </div>
 
-
   <!-- ══════════════════════════════════════════
        HERO BANNER
        ✏️ Image size: 1920 × 680px · JPG · <400KB
@@ -381,22 +377,10 @@
     </div>
   </section>
 
-
-  <!-- ══════════════════════════════════════════
-       INTRO
-  ══════════════════════════════════════════ -->
-  <section id="intro">
+ <!-- INTRO  ══════════════════════════════════════════ -->
+ <section id="intro">
     <div class="container">
       <div class="intro-grid">
-
-        <div class="intro-visual fade-up">
-          <!-- ✏️ Replace with: <img src="underarm-intro.jpg" alt="Underarm treatment" /> (4:5 ratio, e.g. 800×1000px) -->
-          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
-            <span style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#a09282;">Treatment photo</span>
-          </div>
-          <div class="intro-visual-accent"></div>
-        </div>
-
         <div class="intro-copy fade-up">
           <span class="eyebrow">About This Treatment</span>
           <div class="divider"></div>
@@ -406,13 +390,10 @@
             <p>"Our Underarm Skin Reset is designed to gently address these concerns in a single, focused session."</p>
           </div>
           <p>Combining IPL hair reduction with brightening care using European-formulated skincare, it is comfortable, efficient, and designed for real, visible results — from your very first visit.</p>
-          <a href="#pricing" class="btn btn-outline" style="margin-top:8px;">See Pricing</a>
         </div>
-
       </div>
     </div>
   </section>
-
 
   <!-- ══════════════════════════════════════════
        WHY THIS TREATMENT — ICON GRID
@@ -479,7 +460,6 @@
             <p>Backed by clinical evidence.</p>
           </div>
         </div>
-
         <div class="why-icon-item fade-up">
           <div class="why-icon-slot">
             <svg width="32" height="32" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="17" stroke="#B8A75C" stroke-width="1.2"/><path d="M13 22v-3a5 5 0 0110 0v3" stroke="#B8A75C" stroke-width="1.2" stroke-linecap="round"/><circle cx="18" cy="14" r="2.5" stroke="#B8A75C" stroke-width="1"/></svg>
@@ -489,15 +469,11 @@
             <p>Developed by professionals.</p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-
-  <!-- ══════════════════════════════════════════
-       PRICING
-  ══════════════════════════════════════════ -->
+<!--PRICING  ══════════════════════════════════════════ -->
   <section id="pricing">
     <div class="container">
       <div class="pricing-head fade-up">
@@ -536,8 +512,7 @@
     </div>
   </section>
 
-
-  <!-- ══════════════════════════════════════════
+<!-- ══════════════════════════════════════════
        TREATMENT FLOW
        ✏️ Step image size: 480 × 360px · JPG · <200KB each
        ✏️ File names: step-1-prep.jpg, step-2-removal.jpg,
@@ -617,12 +592,7 @@
       </div>
     </div>
   </section>
-
-
-  <!-- ══════════════════════════════════════════
-       PRODUCTS
-  ══════════════════════════════════════════ -->
-  <section id="products">
+<!-- PRODUCTS  ══════════════════════════════════════════  <section id="products">
     <div class="container">
       <div class="products-grid">
         <div class="products-copy fade-up">
@@ -659,10 +629,7 @@
     </div>
   </section>
 
-
-  <!-- ══════════════════════════════════════════
-       TECHNOLOGY
-  ══════════════════════════════════════════ -->
+<!--TECHNOLOGY  ══════════════════════════════════════════ -->
   <section id="technology">
     <div class="container">
       <div class="tech-grid">
@@ -691,10 +658,7 @@
     </div>
   </section>
 
-
-  <!-- ═════════════════
-       FAQ
-  ══════════════════════════════════════════ -->
+<!--FAQ  ══════════════════════════════════════════ -->
   <section id="faq">
     <div class="container">
       <div class="faq-head fade-up">
@@ -746,13 +710,11 @@
           </button>
           <div class="faq-answer"><p>We limit this treatment to 2 sessions per day so each client receives our full attention and the equipment is maintained at optimal performance. We recommend booking ahead to secure your slot.</p></div>
         </div>
-
       </div>
     </div>
   </section>
 
-
-  <!-- ════════════════════   BOOK NOW BANNER═════════════════════════════════════════ -->
+  <!--BOOK NOW BANNER═════════════════════════════════════════ -->
   <section id="book-banner">
     <div class="container book-banner-inner fade-up">
       <span class="eyebrow" style="color:var(--gold)">Reserve Your Session</span>
@@ -767,8 +729,7 @@
     </div>
   </section>
 
-
-  <!-- ════════════════════════   REVIEWS═══════════════ -->
+  <!-- REVIEWS═══════════════ -->
   <section id="reviews">
     <div class="container">
       <div class="reviews-head fade-up">
@@ -800,10 +761,7 @@
     </div>
   </section>
 
-
-  <!-- ══════════════════════════════════════════
-       CONTACT
-  ══════════════════════════════════════════ -->
+  <!-- CONTACT  ══════════════════════════════════════════ -->
   <section id="contact">
     <div class="container">
       <div class="contact-grid">
@@ -841,8 +799,7 @@
     </div>
   </section>
 
-
-  <!-- ══ FOOTER ══ -->
+  <!-- FOOTER ══ -->
   <footer>
     <div class="container footer-inner">
       <img src="QC%20logo%20background%20transp.png" alt="Queen College Logo" style="width:48px;height:48px;object-fit:contain;margin-bottom:8px;opacity:0.85;" />
@@ -871,8 +828,7 @@
     </div>
   </footer>
 
-
-  <!-- ══ JS ══ -->
+ <!-- ══ JS ══ -->
   <script>
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
