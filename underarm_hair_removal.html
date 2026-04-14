@@ -57,15 +57,15 @@
 
     .eyebrow { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
     h1, h2, h3 { font-family: var(--serif); font-weight: 400; color: var(--text-dark); line-height: 1.2; }
-    h1 { font-size: clamp(2.8rem, 8vw, 5rem); letter-spacing: -0.01em; }
-    h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+    h1 { font-size: clamp(2.8rem, 8vw, 2rem); letter-spacing: -0.01em; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
     h3 { font-size: clamp(1.05rem, 2.5vw, 1.3rem); font-weight: 300; }
     p  { font-size: clamp(0.93rem, 2vw, 1.02rem); }
     .divider { width: 48px; height: 1px; background: var(--gold); margin-block: 20px; }
     .container { width: 90%; max-width: 1080px; margin-inline: auto; }
     section { padding-block: var(--section); }
 
-    /* BUTTONS */
+/* BUTTONS */
     .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 14px 30px; border-radius: var(--radius); transition: all 0.3s ease; cursor: pointer; border: none; }
     .btn-primary { background: var(--gold); color: var(--white); }
     .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(184,167,92,0.28); }
@@ -74,7 +74,7 @@
     .btn-ghost { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.45); }
     .btn-ghost:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.7); }
 
-    /* NAV */
+/* NAV */
     #mainNav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(44,36,32,0.35); transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease; }
     #mainNav.scrolled { background: rgba(247,243,241,0.96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 14px 0; box-shadow: 0 1px 0 var(--border-soft); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
@@ -104,12 +104,7 @@
     .mobile-menu a:hover { color: var(--gold); }
     .mobile-close { position: absolute; top: 22px; right: 28px; font-size: 1.5rem; color: var(--text-dark); cursor: pointer; background: none; border: none; line-height: 1; }
 
-/* ══ HERO BANNER
-       ✏️ IMAGE SIZE: 1920 × 680px  (JPG, save <400KB)
-       ✏️ File name: underarm-hero-banner.jpg  (same folder as HTML)
-       ✏️ When ready, replace the background in #hero below with:
-              background: url('underarm-hero-banner.jpg') center/cover no-repeat;
-    */
+/* ══ HERO BANNER    */
     #hero {
       margin-top: 64px;
       position: relative;
@@ -119,13 +114,27 @@
       overflow: hidden;
       background: linear-gradient(135deg, #3a2e28 0%, #5a4a3e 50%, #7a6456 100%);
       display: flex; align-items: center;
-    }
+      background: url('offers/LanndingP/underarm-hero-banner.jpeg') center/cover no-repeat;    }
     #hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(44,36,32,0.72) 0%, rgba(44,36,32,0.30) 65%, transparent 100%); z-index: 1; }
     .hero-content { position: relative; z-index: 2; padding-block: clamp(32px, 5vw, 56px); }
     .hero-tagline { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
     .hero-tagline::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold-light); }
-    .hero-title { color: var(--white); margin-bottom: 8px; text-shadow: 0 2px 24px rgba(0,0,0,0.3); }
-    .hero-subtitle { font-family: var(--serif); font-size: clamp(1rem, 2.5vw, 1.45rem); font-weight: 300; font-style: italic; color: rgba(255,255,255,0.72); margin-bottom: 20px; }
+    .hero-title { text-wrap: balance;
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      line-height: 1.25;
+      font-weight: 500;
+      letter-spacing: -0.01em;    }
+    .hero-subtitle {
+      font-size: clamp(0.85rem, 1.8vw, 1rem);
+      line-height: 1;
+      opacity: 0.85; margin-top: 18px;    
+      margin-bottom: 20px;} 
+    .hero-amp {
+      display: block;
+      font-size: 0.6em;     
+      line-height: 1;
+      margin: 6px 0;        
+      opacity: 0.6;         }
 
 /* ══ INTRO */
     #intro { background: var(--white); }
@@ -371,7 +380,9 @@
   <section id="hero">
     <div class="container hero-content">
       <p class="hero-tagline">Signature Treatment · Queen College</p>
-      <h1>Underarm Hair Removal & Brightening</h1>
+      <h1>Underarm Hair Removal
+      <span class="hero-amp">&</span>
+      Brightening
       <h2 style="font-family: var(--serif); font-weight:300; font-style:italic;">  Underarm Skin Reset · Jurong East</h2>
       <p class="hero-subtitle">Smooth, brighten &amp; restore confidence in just one visit</p>
     </div>
