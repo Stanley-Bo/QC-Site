@@ -134,9 +134,6 @@
     .intro-copy p:last-child { margin-bottom: 0; }
     .intro-quote { border-left: 2px solid var(--gold); padding-left: 24px; margin-block: 24px; }
     .intro-quote p { font-family: var(--serif); font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-style: italic; color: var(--text-dark); line-height: 1.5; }
-    .intro-visual { background: linear-gradient(145deg, #ede5dc, #d4c9bb); aspect-ratio: 4 / 5; border-radius: 2px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .intro-visual img { width: 100%; height: 100%; object-fit: cover; }
-    .intro-visual-accent { position: absolute; bottom: -20px; left: -20px; width: 55%; aspect-ratio: 1; border: 1px solid var(--border); border-radius: 2px; z-index: -1; }
 
     /* ══ WHY THIS TREATMENT — ICON GRID
        ✏️ ICON SIZE: 64 × 64px PNG (transparent background, dark/black icon)
@@ -245,8 +242,8 @@
 
     /* ══ REVIEWS */
     #reviews { background: var(--bg); }
-    .reviews-head { max-width: 480px; margin-bottom: 48px; }
-    .reviews-head p { color: var(--text-soft); margin-top: 12px; }
+    .reviews-head {  margin-bottom: 48px; }
+    .reviews-head p {color: var(--text-soft); margin-top: 12px; text-wrap: balance;}
     .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 36px; }
     .review-card { background: var(--bg-card); padding: 28px 24px; border-radius: var(--radius); border: 1px solid var(--border-soft); transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .review-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); }
@@ -695,7 +692,7 @@
   </section>
 
 
-  <!-- ══════════════════════════════════════════
+  <!-- ═════════════════
        FAQ
   ══════════════════════════════════════════ -->
   <section id="faq">
@@ -838,7 +835,7 @@
             width="100%" height="100%" 
             style="border:0; display:block; min-height:360px;"
             allowfullscreen="" loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>
