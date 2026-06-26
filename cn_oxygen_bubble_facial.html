@@ -234,21 +234,6 @@
       font-style: italic; font-weight: 300;
       color: rgba(240,234,214,0.9); margin-top: 16px; margin-bottom: 8px;
     }
-    .hero-price-badge {
-      display: inline-flex; align-items: baseline; gap: 4px;
-      margin-top: 20px;
-      background: rgba(184,167,92,0.18);
-      border: 1px solid rgba(184,167,92,0.4);
-      border-radius: var(--radius);
-      padding: 10px 18px;
-      backdrop-filter: blur(4px);
-    }
-    .hero-price-label { font-size: 11px; letter-spacing: 0.12em; color: var(--gold-light); }
-    .hero-price-num {
-      font-family: var(--serif); font-size: 2.4rem;
-      color: var(--gold-light); line-height: 1;
-    }
-    .hero-price-currency { font-size: 1.1rem; vertical-align: super; color: var(--gold-light); }
 
     /* ══ INTRO ══ */
     #intro { background: var(--white); }
@@ -260,17 +245,6 @@
     .intro-quote p {
       font-family: var(--serif); font-size: clamp(1.15rem, 2.5vw, 1.5rem);
       font-style: italic; color: var(--text-dark); line-height: 1.6;
-    }
-
-    /* 技术标签 */
-    .tech-pills {
-      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px;
-    }
-    .tech-pill {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
-      padding: 6px 14px; border: 1px solid var(--border);
-      border-radius: 999px; color: var(--gold);
-      background: var(--gold-faint);
     }
 
     /* ══ WHY ══ */
@@ -557,7 +531,7 @@
       <a href="oxygen_bubble_facial.html" onclick="closeMobile()" style="font-size:1.2rem; font-family:var(--sans);">EN</a>
       <a href="cn_oxygen_bubble_facial.html" onclick="closeMobile()" style="font-size:1.2rem; font-family:var(--sans); color:var(--gold);">中文</a>
     </div>
-    <a href="https://wa.me/6580423758?text=你好，我想预约焕氧泡泡美白护肤"
+    <a href="https://wa.me/6580423758?text=你好，我想预约焕氧泡泡美白护肤（$68+体验价）"
        target="_blank" rel="noopener" style="color:var(--gold)">WhatsApp 预约</a>
   </div>
 
@@ -565,13 +539,10 @@
   <!-- ══ HERO ══ -->
   <section id="hero">
     <div class="container hero-content">
-      <p class="hero-tagline">招牌护理 · Queen College</p>
-      <h1 class="hero-title">焕氧泡泡<br><em>美白护肤</em></h1>
-      <p class="hero-subtitle">手机党、熬夜党的专属急救方案</p>
-      <div class="hero-price-badge">
-        <span class="hero-price-label">体验价</span>
-        <span class="hero-price-num"><span class="hero-price-currency">$</span>68</span>
-      </div>
+    <p class="hero-tagline">招牌护理 · Queen College</p>
+    <h1>焕氧泡泡 · 美白护肤</h1>
+    <h2 style="font-family: var(--serif); font-weight:10; font-style:italic; font-size:30px"> <br>手机党、熬夜党的专属急救方案</h2>
+    <p class="hero-subtitle">感受不同 · 裕廊东 Westgate</p>
     </div>
   </section>
 
@@ -588,13 +559,6 @@
           <p>"焕氧泡泡美白护肤，是专为现代生活设计的一次深度肌肤重启——从氧气层开始，由内而外焕活。"</p>
         </div>
         <p>运用<strong>焕氧动能技术·波尔效应</strong>，结合活性营养凝胶与特殊治疗头，将氧气精准输送至皮下，同时以射频紧实轮廓、软膜修护肌底，最后以头颈肩放松作为收尾，全程约80分钟，让你从内到外彻底放松、彻底焕新。</p>
-        <div class="tech-pills">
-          <span class="tech-pill">波尔效应</span>
-          <span class="tech-pill">焕氧动能技术</span>
-          <span class="tech-pill">射频紧实</span>
-          <span class="tech-pill">活性营养凝胶</span>
-          <span class="tech-pill">全程约80分钟</span>
-        </div>
       </div>
     </div>
   </section>
@@ -606,7 +570,7 @@
       <div class="why-head fade-up">
         <span class="eyebrow">护理功效</span>
         <div class="divider"></div>
-        <h2>五大功效，一次全部到位</h2>
+        <h2>五大功效，一次全到位</h2>
         <p>焕氧动能技术不只是单一护理，而是一套从皮下氧气、细胞活力到面部轮廓的综合方案。</p>
       </div>
       <div class="why-icon-grid">
@@ -682,11 +646,11 @@
       <div class="pricing-head fade-up">
         <span class="eyebrow">护理价格</span>
         <div class="divider"></div>
-        <h2>体验价，感受后再决定</h2>
-        <p>无需承诺套餐，无推销压力。用一次体验，让皮肤替你做决定。</p>
+        <h2>体验价，无需承诺套</h2>
+        <p>用一次体验，让皮肤替你做决定。</p>
       </div>
       <div class="pricing-card-single fade-up">
-        <div class="pricing-badge">体验特价</div>
+        <div class="pricing-badge">体验价</div>
         <div class="pricing-name">焕氧泡泡美白护肤</div>
         <div class="pricing-duration">全程约 80 分钟</div>
         <div class="pricing-price"><span>$</span>68</div>
@@ -694,7 +658,7 @@
           包含完整8步护理流程：卸妆清洁 · 热喷软化 · 焕氧排毒 · 渗透按摩 · 射频紧实 · 二次清洁 · 软膜修护 · 头颈肩放松
         </div>
       </div>
-      <p class="pricing-note fade-up">以上价格为新加坡元 · 零推销 · 选择什么，收费什么</p>
+      <p class="pricing-note fade-up">以上价格为新加坡元</p>
       <div style="text-align:center;" class="fade-up">
         <a href="https://wa.me/6580423758?text=你好，我想预约焕氧泡泡美白护肤（$68+体验价）"
            class="btn btn-primary" target="_blank" rel="noopener">WhatsApp 立即预约</a>
@@ -710,7 +674,7 @@
         <span class="eyebrow">护理流程</span>
         <div class="divider"></div>
         <h2>8步护理，从头到尾为你而设</h2>
-        <p>每一步都有它的意义，顺序经过精心安排，让效果层层叠加。</p>
+        <p>每一步经过精心安排，让效果层层叠加。</p>
       </div>
       <div class="flow-steps">
 
@@ -814,7 +778,7 @@
         <span class="eyebrow">常见问题</span>
         <div class="divider"></div>
         <h2>预约前，你想知道的</h2>
-        <p>我们整理了顾客最常问到的问题，帮你更安心地做决定。</p>
+        <p>我们整理了顾客最常问到的问题，让你放心到访。</p>
       </div>
       <div class="faq-list fade-up">
 
@@ -900,22 +864,22 @@
       <div class="reviews-grid">
         <div class="review-card fade-up">
           <div class="review-stars">★★★★★</div>
-          <p class="review-text">"从去年底开始找 Joan 做护理，真的完美解决了我的背痛和水肿问题。她非常专业，手法一绝！真心建议大家来体验一次，你一定会爱上这里。"</p>
-          <div class="review-name">— Kalyn（Google 评价）</div>
+          <p class="review-text">「第一次来体验做的面部清洁和护理，体验很好，感觉皮肤好了很多，强烈推荐给住在西部的小伙伴。👍👍👍」</p>
+          <div class="review-name">— Shirley（Google 评价）</div>
         </div>
         <div class="review-card fade-up">
           <div class="review-stars">★★★★★</div>
-          <p class="review-text">"每个月都会雷打不动来做面部护理。Elaine 态度超级好又温柔，而且这边的价格一直都很公道透明，完全没有乱收费。"</p>
-          <div class="review-name">— Chan ZX（Google 评价）</div>
+          <p class="review-text">「环境很舒服... 服务也很好，来做一次感觉脸都紧致了些，强烈推荐」</p>
+          <div class="review-name">— Amber（Google 评价）</div>
         </div>
         <div class="review-card fade-up">
           <div class="review-stars">★★★★★</div>
-          <p class="review-text">"我在这里 facial 已经 2 年了，每一次的面部护理过程都非常享受。最喜欢海藻项目，让我的闭口好了不少，脸也感觉很滋润清爽。"</p>
-          <div class="review-name">— Chein Jacks（Google 评价）</div>
+          <p class="review-text">「在这边做facial 两年了，感觉很不错，每次Belle帮我做，很专业也很有耐心，做完facial脸更干净了，护肤品也更好吸收。」</p>
+          <div class="review-name">— 青（Google 评价）</div>
         </div>
       </div>
       <div style="text-align:center;">
-        <a href="https://www.google.com/search?q=Queen+College+Singapore+Reviews"
+        <a href="https://www.google.com/search?sca_esv=a7a8fe0e68039bf1&sxsrf=ANbL-n6IZ596PEDLn1QE-sLRZgu5uVbwmw:1774773978776&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOX9pCF1PA9fKhPx8rLfiPaHxUhal-j7VNAAOZIgJqKEvyDiGq9YQI-o-GdyQKQ1oPNAelD3LR_Dv04bDNm0QzKNr25Dr7qA3S2wv8iA6EwqxDC8SDQ%3D%3D&q=Queen+College+Singapore+Reviews&sa=X&ved=2ahUKEwiD072k3MSTAxWO7TgGHQiaBFMQ0bkNegQIMxAH&biw=1512&bih=857&dpr=2"
            target="_blank" class="btn btn-outline">在 Google 查看更多评价</a>
       </div>
     </div>
@@ -935,9 +899,9 @@
           <div class="info-block">
             <div class="info-label">门店地址</div>
             <div class="info-value">
-              3 Gateway Dr, #04-12, Westgate<br>
+              3 Gateway Dr, <br>#04-12, Westgate<br>
               Singapore 608532<br>
-              <span style="color:var(--text-soft); font-size:0.9em;">（靠近 Jurong East MRT D出口）</span>
+              <span style="color:var(--text-soft); font-size:0.9em;">靠近 Jurong East MRT D出口）</span>
             </div>
           </div>
           <div class="info-block">
